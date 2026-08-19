@@ -1,0 +1,14 @@
+{
+  "name": "taskwick",
+  "version": "1.0.0",
+  "description": "Taskwick — see what's actually gotten done in a delegator/doer relationship, without having to call and ask.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}
