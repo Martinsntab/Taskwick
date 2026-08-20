@@ -28,7 +28,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const STYLE_CSS = "/* Taskwick — light & dark, mobile-first. No frameworks, no build step. */\n\n:root {\n  color-scheme: light;\n\n  /* surfaces & ink */\n  --plane: #f9f9f7;\n  --surface: #fcfcfb;\n  --surface-2: #f2f2ef;\n  --ink: #0b0b0b;\n  --ink-2: #52514e;\n  --muted: #898781;\n  --hairline: rgba(11, 11, 11, 0.10);\n  --rule: #e1e0d9;\n\n  /* accent (blue, categorical slot 1 / sequential hue) */\n  --accent: #2a78d6;\n  --accent-strong: #256abf;\n  --accent-ink: #ffffff;\n  --accent-wash: #eaf2fd;\n  --meter-track: #cde2fb;\n\n  /* status — fixed roles, always paired with a written label */\n  --good: #0ca30c;\n  --warning: #fab219;\n  --serious: #ec835a;\n  --critical: #d03b3b;\n\n  --good-wash: #e6f6e6;\n  --good-ink: #085f08;\n  --warning-wash: #fdf0d5;\n  --warning-ink: #6b4906;\n  --serious-wash: #fceee7;\n  --serious-ink: #7c3d1e;\n  --critical-wash: #fbe9e9;\n  --critical-ink: #8e2020;\n  --neutral-wash: #eeeeea;\n\n  --radius: 14px;\n  --radius-sm: 10px;\n  --shadow: 0 1px 2px rgba(11, 11, 11, 0.05);\n}\n\n@media (prefers-color-scheme: dark) {\n  :root {\n    color-scheme: dark;\n    --plane: #0d0d0d;\n    --surface: #1a1a19;\n    --surface-2: #232322;\n    --ink: #ffffff;\n    --ink-2: #c3c2b7;\n    --muted: #898781;\n    --hairline: rgba(255, 255, 255, 0.10);\n    --rule: #2c2c2a;\n\n    --accent: #3987e5;\n    --accent-strong: #5598e7;\n    --accent-ink: #06121f;\n    --accent-wash: #17283c;\n    --meter-track: #16304f;\n\n    --good-wash: #102b10;\n    --good-ink: #7fd77f;\n    --warning-wash: #33280c;\n    --warning-ink: #f4c95f;\n    --serious-wash: #35211a;\n    --serious-ink: #f0a483;\n    --critical-wash: #351718;\n    --critical-ink: #f08f8f;\n    --neutral-wash: #262624;\n    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);\n  }\n}\n\n* { box-sizing: border-box; }\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background: var(--plane);\n  color: var(--ink);\n  font-family: system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n  -webkit-text-size-adjust: 100%;\n  line-height: 1.45;\n}\n\na { color: var(--accent); text-decoration: none; }\na:hover { text-decoration: underline; }\n\n/* ---------- top bar ---------- */\n\n.topbar {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding: 12px 16px;\n  background: var(--surface);\n  border-bottom: 1px solid var(--hairline);\n  position: sticky;\n  top: 0;\n  z-index: 20;\n}\n.brand {\n  font-weight: 680;\n  font-size: 1.05rem;\n  color: var(--ink);\n  letter-spacing: -0.01em;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n}\n.brand-dot {\n  width: 10px; height: 10px; border-radius: 50%;\n  background: var(--accent);\n  flex: none;\n}\n.topbar .inline-form { display: flex; align-items: center; gap: 8px; margin: 0; }\n.topbar .me {\n  color: var(--ink-2); font-size: 0.8rem;\n  max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\n}\n\n.container { max-width: 660px; margin: 0 auto; padding: 18px 16px 80px; }\n.container.wide { max-width: 1040px; }\n\n/* ---------- cards & type ---------- */\n\n.card {\n  background: var(--surface);\n  border: 1px solid var(--hairline);\n  border-radius: var(--radius);\n  padding: 18px;\n  margin-bottom: 16px;\n  box-shadow: var(--shadow);\n}\n\nh1 { font-size: 1.35rem; margin: 0 0 6px; letter-spacing: -0.02em; }\nh2 { font-size: 0.95rem; margin: 0 0 12px; letter-spacing: -0.01em; }\n.muted { color: var(--muted); }\n.small { font-size: 0.82rem; }\n\n.section-title {\n  display: flex; align-items: center; gap: 8px;\n  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;\n  text-transform: uppercase; color: var(--muted);\n  margin: 0 0 10px;\n}\n\n/* ---------- sign-in ---------- */\n\n.auth-card { margin-top: 8vh; text-align: center; }\n.auth-card h1 { font-size: 1.7rem; }\n.auth-lede { color: var(--ink-2); margin: 0 0 20px; }\n\n/* ---------- forms ---------- */\n\n.stacked-form { display: flex; flex-direction: column; gap: 4px; text-align: left; }\n.stacked-form.tight { margin-top: 10px; }\n.stacked-form label { font-size: 0.82rem; font-weight: 620; margin-top: 10px; color: var(--ink-2); }\n.stacked-form input[type=\"text\"],\n.stacked-form input[type=\"email\"],\n.stacked-form input[type=\"password\"],\n.stacked-form input[type=\"date\"],\n.stacked-form input[type=\"number\"],\n.stacked-form textarea {\n  padding: 12px;\n  border: 1px solid var(--rule);\n  border-radius: var(--radius-sm);\n  font-size: 1rem;\n  font-family: inherit;\n  width: 100%;\n  background: var(--plane);\n  color: var(--ink);\n}\n.stacked-form input:focus-visible,\n.stacked-form textarea:focus-visible,\n.btn:focus-visible, .switch:focus-visible, .link-btn:focus-visible {\n  outline: 2px solid var(--accent);\n  outline-offset: 2px;\n}\n.stacked-form textarea { min-height: 76px; resize: vertical; }\n\n.radio-group { border: none; padding: 0; margin: 12px 0 0; }\n.radio-group legend { font-size: 0.82rem; font-weight: 620; padding: 0; color: var(--ink-2); }\n.radio-option, .checkbox-option {\n  display: flex; align-items: center; gap: 10px;\n  font-size: 0.95rem; padding: 9px 0; cursor: pointer;\n}\n.radio-option input, .checkbox-option input { accent-color: var(--accent); width: 18px; height: 18px; }\n\n/* switch-styled checkbox (no JS) */\n.switch-row {\n  display: flex; align-items: center; justify-content: space-between;\n  gap: 12px; padding: 12px 0 4px; cursor: pointer; font-size: 0.95rem;\n}\n.switch-row input { position: absolute; opacity: 0; pointer-events: none; }\n.switch-track {\n  flex: none; width: 46px; height: 27px; border-radius: 999px;\n  background: var(--rule); position: relative; transition: background 0.15s ease;\n}\n.switch-track::after {\n  content: \"\"; position: absolute; top: 3px; left: 3px;\n  width: 21px; height: 21px; border-radius: 50%;\n  background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,0.25);\n  transition: transform 0.15s ease;\n}\n.switch-row input:checked + .switch-track { background: var(--critical); }\n.switch-row input:checked + .switch-track::after { transform: translateX(19px); }\n.switch-row input:focus-visible + .switch-track { outline: 2px solid var(--accent); outline-offset: 2px; }\n\n/* ---------- buttons ---------- */\n\n.btn {\n  display: inline-flex; align-items: center; justify-content: center; gap: 6px;\n  min-height: 44px; padding: 10px 16px;\n  border-radius: var(--radius-sm); border: 1px solid transparent;\n  font-size: 0.95rem; font-weight: 620; font-family: inherit;\n  cursor: pointer; background: var(--surface); color: var(--ink);\n}\n.btn-block { width: 100%; margin-top: 14px; }\n.btn-primary { background: var(--accent); color: var(--accent-ink); }\n.btn-primary:hover { background: var(--accent-strong); }\n.btn-ghost { background: var(--surface); border-color: var(--rule); color: var(--ink); }\n.btn-ghost:hover { background: var(--surface-2); }\n.btn-small { min-height: 38px; padding: 7px 13px; font-size: 0.85rem; }\n.link-btn {\n  background: none; border: none; color: var(--accent);\n  font-size: 0.82rem; cursor: pointer; padding: 6px; font-family: inherit;\n}\n.inline-form { display: inline-block; margin: 6px 6px 0 0; }\n\n/* urgent toggle rendered as a switch, but it's a real submit button (no JS) */\n.switch {\n  display: inline-flex; align-items: center; gap: 9px;\n  background: none; border: none; cursor: pointer; padding: 6px 0;\n  font-size: 0.82rem; font-weight: 600; color: var(--ink-2); font-family: inherit;\n}\n.switch .track {\n  width: 38px; height: 22px; border-radius: 999px; background: var(--rule);\n  position: relative; flex: none; transition: background 0.15s ease;\n}\n.switch .track::after {\n  content: \"\"; position: absolute; top: 3px; left: 3px;\n  width: 16px; height: 16px; border-radius: 50%; background: var(--surface);\n  box-shadow: 0 1px 2px rgba(0,0,0,0.25); transition: transform 0.15s ease;\n}\n.switch[aria-pressed=\"true\"] .track { background: var(--critical); }\n.switch[aria-pressed=\"true\"] .track::after { transform: translateX(16px); }\n.switch[aria-pressed=\"true\"] { color: var(--critical-ink); }\n\n/* ---------- alerts ---------- */\n\n.alert {\n  padding: 12px 14px; border-radius: var(--radius-sm);\n  margin-bottom: 14px; font-size: 0.9rem; border: 1px solid transparent;\n}\n.alert-error { background: var(--critical-wash); color: var(--critical-ink); border-color: var(--hairline); }\n.alert-notice { background: var(--accent-wash); color: var(--ink); border-color: var(--hairline); }\n.dev-box {\n  background: var(--warning-wash); color: var(--warning-ink);\n  border: 1px dashed var(--warning); border-radius: var(--radius-sm);\n  padding: 14px; margin-top: 12px; font-size: 0.85rem; word-break: break-all; text-align: left;\n}\n.dev-box a { color: inherit; text-decoration: underline; font-weight: 600; }\n\n/* ---------- avatars ---------- */\n\n.avatar {\n  width: 30px; height: 30px; border-radius: 50%; flex: none;\n  display: inline-flex; align-items: center; justify-content: center;\n  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.02em;\n  background: var(--accent-wash); color: var(--accent-strong);\n  border: 1px solid var(--hairline); text-transform: uppercase;\n}\n.avatar-sm { width: 24px; height: 24px; font-size: 0.66rem; }\n\n/* ---------- pair list (dashboard) ---------- */\n\n.pair-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }\n.pair-row {\n  border: 1px solid var(--hairline); border-radius: var(--radius);\n  background: var(--surface); padding: 0;\n}\n.pair-row.pending { padding: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }\n.pair-link { display: block; padding: 14px; color: var(--ink); }\n.pair-link:hover { text-decoration: none; background: var(--surface-2); border-radius: var(--radius); }\n.pair-top { display: flex; align-items: center; gap: 10px; }\n.pair-who { flex: 1; min-width: 0; }\n.pair-arrow { font-weight: 640; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n.pair-sub { color: var(--muted); font-size: 0.8rem; }\n.chev { color: var(--muted); flex: none; }\n\n/* ---------- meter (single ratio against a limit) ---------- */\n\n.meter {\n  height: 6px; border-radius: 999px; background: var(--meter-track);\n  overflow: hidden; margin-top: 10px;\n}\n.meter > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; }\n.meter-row {\n  display: flex; align-items: center; justify-content: space-between;\n  gap: 10px; margin-top: 8px; font-size: 0.8rem; color: var(--ink-2);\n}\n.counts { display: flex; gap: 6px; flex-wrap: wrap; }\n.count-chip {\n  display: inline-flex; align-items: center; gap: 5px;\n  background: var(--neutral-wash); color: var(--ink-2);\n  border-radius: 999px; padding: 2px 9px; font-size: 0.76rem; font-weight: 600;\n}\n.count-chip.is-critical { background: var(--critical-wash); color: var(--critical-ink); }\n.count-chip.is-warning { background: var(--warning-wash); color: var(--warning-ink); }\n.count-chip .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }\n\n/* ---------- badges ---------- */\n\n.badge {\n  display: inline-flex; align-items: center; gap: 5px;\n  padding: 3px 9px; border-radius: 999px;\n  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;\n  background: var(--neutral-wash); color: var(--ink-2); white-space: nowrap;\n}\n.badge .dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }\n.badge-delegator { background: var(--accent-wash); color: var(--accent-strong); }\n.badge-doer { background: var(--good-wash); color: var(--good-ink); }\n.badge-urgent { background: var(--critical-wash); color: var(--critical-ink); }\n.badge-urgent .dot { background: var(--critical); }\n.badge-stale { background: var(--warning-wash); color: var(--warning-ink); }\n.badge-stale .dot { background: var(--warning); }\n.badge-overdue { background: var(--serious-wash); color: var(--serious-ink); }\n.badge-overdue .dot { background: var(--serious); }\n.badge-self { background: var(--neutral-wash); color: var(--ink-2); }\n\n/* ---------- pair page header ---------- */\n\n.back-link { display: inline-block; margin-bottom: 12px; font-size: 0.88rem; color: var(--muted); }\n.pair-header { margin-bottom: 16px; }\n.pair-header-top { display: flex; align-items: flex-start; gap: 12px; }\n.pair-header-top .avatar { margin-top: 2px; }\n.pair-header h1 { margin: 0; }\n.pair-header .pair-sub { margin-top: 2px; }\n.pair-progress { margin-top: 14px; }\n\n.settings-details { margin-top: 12px; }\n.settings-details summary,\n.note-details summary,\n.history-details summary {\n  cursor: pointer; color: var(--accent); font-size: 0.82rem; font-weight: 600;\n  list-style: none; display: inline-flex; align-items: center; gap: 5px;\n}\n.settings-details summary::-webkit-details-marker,\n.note-details summary::-webkit-details-marker,\n.history-details summary::-webkit-details-marker { display: none; }\n.settings-details summary::before,\n.note-details summary::before,\n.history-details summary::before { content: \"▸\"; font-size: 0.7rem; }\n.settings-details[open] summary::before,\n.note-details[open] summary::before,\n.history-details[open] summary::before { content: \"▾\"; }\n\n/* ---------- add task ---------- */\n\n.add-task-details { margin-bottom: 20px; }\n.add-task-details > summary { list-style: none; cursor: pointer; }\n.add-task-details > summary::-webkit-details-marker { display: none; }\n.add-task-details[open] > summary { margin-bottom: 12px; background: var(--accent-strong); }\n.add-task-details form {\n  background: var(--surface); border: 1px solid var(--hairline);\n  border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);\n}\n\n/* ---------- board ---------- */\n\n.board { display: grid; grid-template-columns: 1fr; gap: 22px; }\n@media (min-width: 780px) { .board { grid-template-columns: repeat(3, 1fr); align-items: start; } }\n\n.board-col h2 { display: flex; align-items: center; gap: 8px; }\n.board-col .count {\n  background: var(--neutral-wash); color: var(--ink-2); border-radius: 999px;\n  font-size: 0.72rem; padding: 1px 8px; font-weight: 700;\n}\n.col-mark { width: 8px; height: 8px; border-radius: 50%; flex: none; }\n.col-todo .col-mark { background: var(--muted); }\n.col-in_progress .col-mark { background: var(--accent); }\n.col-done .col-mark { background: var(--good); }\n.empty-col {\n  padding: 16px; border: 1px dashed var(--rule); border-radius: var(--radius);\n  text-align: center; color: var(--muted); font-size: 0.85rem;\n}\n\n.task-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }\n.task-card {\n  background: var(--surface); border: 1px solid var(--hairline);\n  border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow);\n  border-left: 3px solid transparent;\n}\n.task-card.urgent { border-left-color: var(--critical); }\n.task-card.stale { border-left-color: var(--warning); }\n.task-card.is-done .task-title { color: var(--ink-2); }\n\n.task-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; }\n.task-title { font-weight: 660; font-size: 0.98rem; letter-spacing: -0.01em; }\n.task-badges { display: flex; gap: 6px; flex-wrap: wrap; }\n.task-desc { margin: 8px 0 0; font-size: 0.89rem; color: var(--ink-2); }\n.task-meta { margin: 8px 0 0; font-size: 0.78rem; color: var(--muted); }\n.done-note {\n  background: var(--good-wash); color: var(--good-ink); border-radius: var(--radius-sm);\n  padding: 10px 12px; font-size: 0.86rem; margin: 10px 0 0;\n}\n.task-actions {\n  display: flex; flex-wrap: wrap; align-items: center; gap: 4px;\n  margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--hairline);\n}\n\n.note-details, .history-details { margin-top: 10px; }\n.history-list {\n  list-style: none; margin: 10px 0 0; padding: 0; font-size: 0.8rem;\n  display: flex; flex-direction: column; gap: 8px;\n}\n.history-list li { border-left: 2px solid var(--rule); padding: 0 0 0 10px; }\n.history-when { color: var(--muted); }\n.history-what { font-weight: 600; }\n.history-note { font-style: italic; margin-top: 3px; color: var(--ink-2); }\n\n/* ---------- role clarity ---------- */\n\n.role-banner {\n  display: flex; flex-direction: column; gap: 2px;\n  border-radius: var(--radius); padding: 12px 14px; margin-top: 14px;\n  border: 1px solid var(--hairline); border-left-width: 3px;\n  background: var(--surface);\n}\n.role-title { font-weight: 680; font-size: 0.92rem; }\n.role-detail { font-size: 0.84rem; color: var(--ink-2); }\n.role-delegating { border-left-color: var(--accent); background: var(--accent-wash); }\n.role-doing { border-left-color: var(--good); background: var(--good-wash); }\n.role-doing .role-detail, .role-doing .role-title { color: var(--good-ink); }\n.role-shared { border-left-color: var(--muted); background: var(--neutral-wash); }\n\n.role-word { font-weight: 640; }\n.role-word.role-delegator { color: var(--accent-strong); }\n.role-word.role-doer { color: var(--good-ink); }\n.role-word.role-shared { color: var(--ink-2); }\n\n/* ---------- per-person notes ---------- */\n\n.notes { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }\n.note {\n  background: var(--surface-2); border-radius: var(--radius-sm);\n  padding: 9px 11px; font-size: 0.86rem;\n}\n.note-mine { background: var(--good-wash); }\n.note-head { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }\n.note-who { font-weight: 640; font-size: 0.8rem; }\n.note-when { margin-left: auto; }\n.note-body { color: var(--ink-2); }\n.note-mine .note-body, .note-mine .note-who { color: var(--good-ink); }\n\n/* ---------- invite code callout ---------- */\n\n.code-callout {\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 1.15rem; font-weight: 700; letter-spacing: 0.14em;\n  background: var(--surface); border: 1px dashed var(--accent);\n  border-radius: var(--radius-sm); padding: 10px 14px; display: inline-block; margin-top: 8px;\n}\n\n.empty-state { text-align: center; padding: 26px 16px; color: var(--muted); }\n.empty-state strong { display: block; color: var(--ink); margin-bottom: 4px; font-size: 0.95rem; }\n";
+const STYLE_CSS = "/* Taskwick — light & dark, mobile-first. No frameworks, no build step. */\n\n:root {\n  color-scheme: light;\n\n  /* surfaces & ink */\n  --plane: #f9f9f7;\n  --surface: #fcfcfb;\n  --surface-2: #f2f2ef;\n  --ink: #0b0b0b;\n  --ink-2: #52514e;\n  --muted: #898781;\n  --hairline: rgba(11, 11, 11, 0.10);\n  --rule: #e1e0d9;\n\n  /* accent (blue, categorical slot 1 / sequential hue) */\n  --accent: #2a78d6;\n  --accent-strong: #256abf;\n  --accent-ink: #ffffff;\n  --accent-wash: #eaf2fd;\n  --meter-track: #cde2fb;\n\n  /* status — fixed roles, always paired with a written label */\n  --good: #0ca30c;\n  --warning: #fab219;\n  --serious: #ec835a;\n  --critical: #d03b3b;\n\n  --good-wash: #e6f6e6;\n  --good-ink: #085f08;\n  --warning-wash: #fdf0d5;\n  --warning-ink: #6b4906;\n  --serious-wash: #fceee7;\n  --serious-ink: #7c3d1e;\n  --critical-wash: #fbe9e9;\n  --critical-ink: #8e2020;\n  --neutral-wash: #eeeeea;\n\n  --radius: 14px;\n  --radius-sm: 10px;\n  --shadow: 0 1px 2px rgba(11, 11, 11, 0.05);\n}\n\n@media (prefers-color-scheme: dark) {\n  :root {\n    color-scheme: dark;\n    --plane: #0d0d0d;\n    --surface: #1a1a19;\n    --surface-2: #232322;\n    --ink: #ffffff;\n    --ink-2: #c3c2b7;\n    --muted: #898781;\n    --hairline: rgba(255, 255, 255, 0.10);\n    --rule: #2c2c2a;\n\n    --accent: #3987e5;\n    --accent-strong: #5598e7;\n    --accent-ink: #06121f;\n    --accent-wash: #17283c;\n    --meter-track: #16304f;\n\n    --good-wash: #102b10;\n    --good-ink: #7fd77f;\n    --warning-wash: #33280c;\n    --warning-ink: #f4c95f;\n    --serious-wash: #35211a;\n    --serious-ink: #f0a483;\n    --critical-wash: #351718;\n    --critical-ink: #f08f8f;\n    --neutral-wash: #262624;\n    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);\n  }\n}\n\n* { box-sizing: border-box; }\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background: var(--plane);\n  color: var(--ink);\n  font-family: system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n  -webkit-text-size-adjust: 100%;\n  line-height: 1.45;\n}\n\na { color: var(--accent); text-decoration: none; }\na:hover { text-decoration: underline; }\n\n/* ---------- top bar ---------- */\n\n.topbar {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding: 12px 16px;\n  background: var(--surface);\n  border-bottom: 1px solid var(--hairline);\n  position: sticky;\n  top: 0;\n  z-index: 20;\n}\n.brand {\n  font-weight: 680;\n  font-size: 1.05rem;\n  color: var(--ink);\n  letter-spacing: -0.01em;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n}\n.brand-dot {\n  width: 10px; height: 10px; border-radius: 50%;\n  background: var(--accent);\n  flex: none;\n}\n.topbar .inline-form { display: flex; align-items: center; gap: 8px; margin: 0; }\n.topbar .me {\n  color: var(--ink-2); font-size: 0.8rem;\n  max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\n}\n\n.container { max-width: 660px; margin: 0 auto; padding: 18px 16px 80px; }\n.container.wide { max-width: 1040px; }\n\n/* ---------- cards & type ---------- */\n\n.card {\n  background: var(--surface);\n  border: 1px solid var(--hairline);\n  border-radius: var(--radius);\n  padding: 18px;\n  margin-bottom: 16px;\n  box-shadow: var(--shadow);\n}\n\nh1 { font-size: 1.35rem; margin: 0 0 6px; letter-spacing: -0.02em; }\nh2 { font-size: 0.95rem; margin: 0 0 12px; letter-spacing: -0.01em; }\n.muted { color: var(--muted); }\n.small { font-size: 0.82rem; }\n\n.section-title {\n  display: flex; align-items: center; gap: 8px;\n  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;\n  text-transform: uppercase; color: var(--muted);\n  margin: 0 0 10px;\n}\n\n/* ---------- sign-in ---------- */\n\n.auth-card { margin-top: 8vh; text-align: center; }\n.auth-card h1 { font-size: 1.7rem; }\n.auth-lede { color: var(--ink-2); margin: 0 0 20px; }\n\n/* ---------- forms ---------- */\n\n.stacked-form { display: flex; flex-direction: column; gap: 4px; text-align: left; }\n.stacked-form.tight { margin-top: 10px; }\n.stacked-form label { font-size: 0.82rem; font-weight: 620; margin-top: 10px; color: var(--ink-2); }\n.stacked-form input[type=\"text\"],\n.stacked-form input[type=\"email\"],\n.stacked-form input[type=\"password\"],\n.stacked-form input[type=\"date\"],\n.stacked-form input[type=\"number\"],\n.stacked-form textarea {\n  padding: 12px;\n  border: 1px solid var(--rule);\n  border-radius: var(--radius-sm);\n  font-size: 1rem;\n  font-family: inherit;\n  width: 100%;\n  background: var(--plane);\n  color: var(--ink);\n}\n.stacked-form input:focus-visible,\n.stacked-form textarea:focus-visible,\n.btn:focus-visible, .switch:focus-visible, .link-btn:focus-visible {\n  outline: 2px solid var(--accent);\n  outline-offset: 2px;\n}\n.stacked-form textarea { min-height: 76px; resize: vertical; }\n\n.radio-group { border: none; padding: 0; margin: 12px 0 0; }\n.radio-group legend { font-size: 0.82rem; font-weight: 620; padding: 0; color: var(--ink-2); }\n.radio-option, .checkbox-option {\n  display: flex; align-items: center; gap: 10px;\n  font-size: 0.95rem; padding: 9px 0; cursor: pointer;\n}\n.radio-option input, .checkbox-option input { accent-color: var(--accent); width: 18px; height: 18px; }\n\n/* switch-styled checkbox (no JS) */\n.switch-row {\n  display: flex; align-items: center; justify-content: space-between;\n  gap: 12px; padding: 12px 0 4px; cursor: pointer; font-size: 0.95rem;\n}\n.switch-row input { position: absolute; opacity: 0; pointer-events: none; }\n.switch-track {\n  flex: none; width: 46px; height: 27px; border-radius: 999px;\n  background: var(--rule); position: relative; transition: background 0.15s ease;\n}\n.switch-track::after {\n  content: \"\"; position: absolute; top: 3px; left: 3px;\n  width: 21px; height: 21px; border-radius: 50%;\n  background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,0.25);\n  transition: transform 0.15s ease;\n}\n.switch-row input:checked + .switch-track { background: var(--critical); }\n.switch-row input:checked + .switch-track::after { transform: translateX(19px); }\n.switch-row input:focus-visible + .switch-track { outline: 2px solid var(--accent); outline-offset: 2px; }\n\n/* ---------- buttons ---------- */\n\n.btn {\n  display: inline-flex; align-items: center; justify-content: center; gap: 6px;\n  min-height: 44px; padding: 10px 16px;\n  border-radius: var(--radius-sm); border: 1px solid transparent;\n  font-size: 0.95rem; font-weight: 620; font-family: inherit;\n  cursor: pointer; background: var(--surface); color: var(--ink);\n}\n.btn-block { width: 100%; margin-top: 14px; }\n.btn-primary { background: var(--accent); color: var(--accent-ink); }\n.btn-primary:hover { background: var(--accent-strong); }\n.btn-ghost { background: var(--surface); border-color: var(--rule); color: var(--ink); }\n.btn-ghost:hover { background: var(--surface-2); }\n.btn-small { min-height: 38px; padding: 7px 13px; font-size: 0.85rem; }\n.link-btn {\n  background: none; border: none; color: var(--accent);\n  font-size: 0.82rem; cursor: pointer; padding: 6px; font-family: inherit;\n}\n.inline-form { display: inline-block; margin: 6px 6px 0 0; }\n\n/* urgent toggle rendered as a switch, but it's a real submit button (no JS) */\n.switch {\n  display: inline-flex; align-items: center; gap: 9px;\n  background: none; border: none; cursor: pointer; padding: 6px 0;\n  font-size: 0.82rem; font-weight: 600; color: var(--ink-2); font-family: inherit;\n}\n.switch .track {\n  width: 38px; height: 22px; border-radius: 999px; background: var(--rule);\n  position: relative; flex: none; transition: background 0.15s ease;\n}\n.switch .track::after {\n  content: \"\"; position: absolute; top: 3px; left: 3px;\n  width: 16px; height: 16px; border-radius: 50%; background: var(--surface);\n  box-shadow: 0 1px 2px rgba(0,0,0,0.25); transition: transform 0.15s ease;\n}\n.switch[aria-pressed=\"true\"] .track { background: var(--critical); }\n.switch[aria-pressed=\"true\"] .track::after { transform: translateX(16px); }\n.switch[aria-pressed=\"true\"] { color: var(--critical-ink); }\n\n/* ---------- alerts ---------- */\n\n.alert {\n  padding: 12px 14px; border-radius: var(--radius-sm);\n  margin-bottom: 14px; font-size: 0.9rem; border: 1px solid transparent;\n}\n.alert-error { background: var(--critical-wash); color: var(--critical-ink); border-color: var(--hairline); }\n.alert-notice { background: var(--accent-wash); color: var(--ink); border-color: var(--hairline); }\n.dev-box {\n  background: var(--warning-wash); color: var(--warning-ink);\n  border: 1px dashed var(--warning); border-radius: var(--radius-sm);\n  padding: 14px; margin-top: 12px; font-size: 0.85rem; word-break: break-all; text-align: left;\n}\n.dev-box a { color: inherit; text-decoration: underline; font-weight: 600; }\n\n/* ---------- avatars ---------- */\n\n.avatar {\n  width: 30px; height: 30px; border-radius: 50%; flex: none;\n  display: inline-flex; align-items: center; justify-content: center;\n  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.02em;\n  background: var(--accent-wash); color: var(--accent-strong);\n  border: 1px solid var(--hairline); text-transform: uppercase;\n}\n.avatar-sm { width: 24px; height: 24px; font-size: 0.66rem; }\n\n/* ---------- pair list (dashboard) ---------- */\n\n.pair-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }\n.pair-row {\n  border: 1px solid var(--hairline); border-radius: var(--radius);\n  background: var(--surface); padding: 0;\n}\n.pair-row.pending { padding: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }\n.pair-link { display: block; padding: 14px; color: var(--ink); }\n.pair-link:hover { text-decoration: none; background: var(--surface-2); border-radius: var(--radius); }\n.pair-top { display: flex; align-items: center; gap: 10px; }\n.pair-who { flex: 1; min-width: 0; }\n.pair-arrow { font-weight: 640; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n.pair-sub { color: var(--muted); font-size: 0.8rem; }\n.chev { color: var(--muted); flex: none; }\n\n/* ---------- meter (single ratio against a limit) ---------- */\n\n.meter {\n  height: 6px; border-radius: 999px; background: var(--meter-track);\n  overflow: hidden; margin-top: 10px;\n}\n.meter > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; }\n.meter-row {\n  display: flex; align-items: center; justify-content: space-between;\n  gap: 10px; margin-top: 8px; font-size: 0.8rem; color: var(--ink-2);\n}\n.counts { display: flex; gap: 6px; flex-wrap: wrap; }\n.count-chip {\n  display: inline-flex; align-items: center; gap: 5px;\n  background: var(--neutral-wash); color: var(--ink-2);\n  border-radius: 999px; padding: 2px 9px; font-size: 0.76rem; font-weight: 600;\n}\n.count-chip.is-critical { background: var(--critical-wash); color: var(--critical-ink); }\n.count-chip.is-warning { background: var(--warning-wash); color: var(--warning-ink); }\n.count-chip .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }\n\n/* ---------- badges ---------- */\n\n.badge {\n  display: inline-flex; align-items: center; gap: 5px;\n  padding: 3px 9px; border-radius: 999px;\n  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;\n  background: var(--neutral-wash); color: var(--ink-2); white-space: nowrap;\n}\n.badge .dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }\n.badge-delegator { background: var(--accent-wash); color: var(--accent-strong); }\n.badge-doer { background: var(--good-wash); color: var(--good-ink); }\n.badge-urgent { background: var(--critical-wash); color: var(--critical-ink); }\n.badge-urgent .dot { background: var(--critical); }\n.badge-stale { background: var(--warning-wash); color: var(--warning-ink); }\n.badge-stale .dot { background: var(--warning); }\n.badge-overdue { background: var(--serious-wash); color: var(--serious-ink); }\n.badge-overdue .dot { background: var(--serious); }\n.badge-self { background: var(--neutral-wash); color: var(--ink-2); }\n\n/* ---------- pair page header ---------- */\n\n.back-link { display: inline-block; margin-bottom: 12px; font-size: 0.88rem; color: var(--muted); }\n.pair-header { margin-bottom: 16px; }\n.pair-header-top { display: flex; align-items: flex-start; gap: 12px; }\n.pair-header-top .avatar { margin-top: 2px; }\n.pair-header h1 { margin: 0; }\n.pair-header .pair-sub { margin-top: 2px; }\n.pair-progress { margin-top: 14px; }\n\n.settings-details { margin-top: 12px; }\n.settings-details summary,\n.note-details summary,\n.history-details summary {\n  cursor: pointer; color: var(--accent); font-size: 0.82rem; font-weight: 600;\n  list-style: none; display: inline-flex; align-items: center; gap: 5px;\n}\n.settings-details summary::-webkit-details-marker,\n.note-details summary::-webkit-details-marker,\n.history-details summary::-webkit-details-marker { display: none; }\n.settings-details summary::before,\n.note-details summary::before,\n.history-details summary::before { content: \"▸\"; font-size: 0.7rem; }\n.settings-details[open] summary::before,\n.note-details[open] summary::before,\n.history-details[open] summary::before { content: \"▾\"; }\n\n/* ---------- add task ---------- */\n\n.add-task-details { margin-bottom: 20px; }\n.add-task-details > summary { list-style: none; cursor: pointer; }\n.add-task-details > summary::-webkit-details-marker { display: none; }\n.add-task-details[open] > summary { margin-bottom: 12px; background: var(--accent-strong); }\n.add-task-details form {\n  background: var(--surface); border: 1px solid var(--hairline);\n  border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);\n}\n\n/* ---------- board ---------- */\n\n.board { display: grid; grid-template-columns: 1fr; gap: 22px; }\n@media (min-width: 780px) { .board { grid-template-columns: repeat(3, 1fr); align-items: start; } }\n\n.board-col h2 { display: flex; align-items: center; gap: 8px; }\n.board-col .count {\n  background: var(--neutral-wash); color: var(--ink-2); border-radius: 999px;\n  font-size: 0.72rem; padding: 1px 8px; font-weight: 700;\n}\n.col-mark { width: 8px; height: 8px; border-radius: 50%; flex: none; }\n.col-todo .col-mark { background: var(--muted); }\n.col-in_progress .col-mark { background: var(--accent); }\n.col-done .col-mark { background: var(--good); }\n.empty-col {\n  padding: 16px; border: 1px dashed var(--rule); border-radius: var(--radius);\n  text-align: center; color: var(--muted); font-size: 0.85rem;\n}\n\n.task-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }\n.task-card {\n  background: var(--surface); border: 1px solid var(--hairline);\n  border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow);\n  border-left: 3px solid transparent;\n}\n.task-card.urgent { border-left-color: var(--critical); }\n.task-card.stale { border-left-color: var(--warning); }\n.task-card.is-done .task-title { color: var(--ink-2); }\n\n.task-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; }\n.task-title { font-weight: 660; font-size: 0.98rem; letter-spacing: -0.01em; }\n.task-badges { display: flex; gap: 6px; flex-wrap: wrap; }\n.task-desc { margin: 8px 0 0; font-size: 0.89rem; color: var(--ink-2); }\n.task-meta { margin: 8px 0 0; font-size: 0.78rem; color: var(--muted); }\n.done-note {\n  background: var(--good-wash); color: var(--good-ink); border-radius: var(--radius-sm);\n  padding: 10px 12px; font-size: 0.86rem; margin: 10px 0 0;\n}\n.task-actions {\n  display: flex; flex-wrap: wrap; align-items: center; gap: 4px;\n  margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--hairline);\n}\n\n.note-details, .history-details { margin-top: 10px; }\n.history-list {\n  list-style: none; margin: 10px 0 0; padding: 0; font-size: 0.8rem;\n  display: flex; flex-direction: column; gap: 8px;\n}\n.history-list li { border-left: 2px solid var(--rule); padding: 0 0 0 10px; }\n.history-when { color: var(--muted); }\n.history-what { font-weight: 600; }\n.history-note { font-style: italic; margin-top: 3px; color: var(--ink-2); }\n\n/* ---------- role clarity ---------- */\n\n.role-banner {\n  display: flex; flex-direction: column; gap: 2px;\n  border-radius: var(--radius); padding: 12px 14px; margin-top: 14px;\n  border: 1px solid var(--hairline); border-left-width: 3px;\n  background: var(--surface);\n}\n.role-title { font-weight: 680; font-size: 0.92rem; }\n.role-detail { font-size: 0.84rem; color: var(--ink-2); }\n.role-delegating { border-left-color: var(--accent); background: var(--accent-wash); }\n.role-doing { border-left-color: var(--good); background: var(--good-wash); }\n.role-doing .role-detail, .role-doing .role-title { color: var(--good-ink); }\n.role-shared { border-left-color: var(--muted); background: var(--neutral-wash); }\n\n.role-word { font-weight: 640; }\n.role-word.role-delegator { color: var(--accent-strong); }\n.role-word.role-doer { color: var(--good-ink); }\n.role-word.role-shared { color: var(--ink-2); }\n\n/* ---------- per-person notes ---------- */\n\n.notes { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }\n.note {\n  background: var(--surface-2); border-radius: var(--radius-sm);\n  padding: 9px 11px; font-size: 0.86rem;\n}\n.note-mine { background: var(--good-wash); }\n.note-head { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }\n.note-who { font-weight: 640; font-size: 0.8rem; }\n.note-when { margin-left: auto; }\n.note-body { color: var(--ink-2); }\n.note-mine .note-body, .note-mine .note-who { color: var(--good-ink); }\n\n/* ---------- invite code callout ---------- */\n\n.code-callout {\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 1.15rem; font-weight: 700; letter-spacing: 0.14em;\n  background: var(--surface); border: 1px dashed var(--accent);\n  border-radius: var(--radius-sm); padding: 10px 14px; display: inline-block; margin-top: 8px;\n}\n\n/* ---------- destructive actions ---------- */\n\n.btn-danger { background: var(--critical); color: #fff; }\n.btn-danger:hover { filter: brightness(0.92); }\n.danger-link { color: var(--critical-ink); font-weight: 620; font-size: 0.85rem; }\n\n.danger-list {\n  display: flex; flex-direction: column; gap: 8px;\n  background: var(--critical-wash); color: var(--critical-ink);\n  border-radius: var(--radius-sm); padding: 14px; margin: 14px 0;\n  font-size: 0.88rem;\n}\n.danger-list div { display: flex; gap: 8px; align-items: baseline; }\n.danger-list div::before { content: \"×\"; font-weight: 700; flex: none; }\n\n.version-tag {\n  margin-top: 20px; font-size: 0.72rem; color: var(--muted);\n  letter-spacing: 0.08em; text-transform: uppercase;\n}\n\n.empty-state { text-align: center; padding: 26px 16px; color: var(--muted); }\n.empty-state strong { display: block; color: var(--ink); margin-bottom: 4px; font-size: 0.95rem; }\n";
 
 // ====================================================================
 // src/util.js
@@ -446,6 +446,25 @@ function clearInviteCode(id) {
   db.prepare('UPDATE pairs SET invite_code = NULL WHERE id = ?').run(id);
 }
 
+/**
+ * End a relationship and remove everything belonging to it. Children go
+ * first so the foreign keys stay satisfied, and the whole thing runs in one
+ * transaction so a failure part-way can't leave orphaned tasks behind.
+ */
+function disconnectPair(pairId) {
+  db.exec('BEGIN');
+  try {
+    db.prepare('DELETE FROM task_notes WHERE task_id IN (SELECT id FROM tasks WHERE pair_id = ?)').run(pairId);
+    db.prepare('DELETE FROM task_events WHERE task_id IN (SELECT id FROM tasks WHERE pair_id = ?)').run(pairId);
+    db.prepare('DELETE FROM tasks WHERE pair_id = ?').run(pairId);
+    db.prepare('DELETE FROM pairs WHERE id = ?').run(pairId);
+    db.exec('COMMIT');
+  } catch (err) {
+    db.exec('ROLLBACK');
+    throw err;
+  }
+}
+
 function roleInPair(pair, userId) {
   if (pair.delegator_user_id === userId) return 'delegator';
   if (pair.doer_user_id === userId) return 'doer';
@@ -722,8 +741,9 @@ function countChips(stats) {
   return `<div class="counts">${chips.join('')}</div>`;
 }
 
-function loginPage({ query, emailLinks }) {
-  const sent = query.sent === '1';
+const APP_VERSION = 'v3';
+
+function loginPage({ query }) {
   return {
     title: 'Sign in',
     body: `
@@ -731,59 +751,42 @@ function loginPage({ query, emailLinks }) {
   <h1>Taskwick</h1>
   <p class="auth-lede">See what's actually gotten done — without making a call.</p>
   ${alertBox(query)}
-  ${sent ? `
-    <div class="alert alert-notice">
-      If there's an account for <strong>${escapeHtml(query.email || 'that address')}</strong>,
-      a sign-in link is on its way. It expires in 15 minutes.
-    </div>
-    <p><a href="/login">Back to sign in</a></p>
-  ` : `
-    <form method="post" action="/auth/password" class="stacked-form">
-      <label for="email">Email address</label>
-      <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@example.com">
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" autocomplete="current-password" required>
-      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-    </form>
-
-    ${emailLinks ? `
-    <details class="settings-details" style="margin-top:16px">
-      <summary>Email me a sign-in link instead</summary>
-      <form method="post" action="/auth/request" class="stacked-form tight">
-        <label for="link_email">Email address</label>
-        <input id="link_email" name="email" type="email" inputmode="email" required placeholder="you@example.com">
-        <button type="submit" class="btn btn-ghost btn-block">Send me a link</button>
-      </form>
-    </details>` : ''}
-
-    <p class="muted small" style="margin-top:18px">
-      Got an invite code? <a href="/join">Join here</a><br>
-      Set up before passwords existed? <a href="/set-password">Set your password</a>
-    </p>
-  `}
+  <form method="post" action="/auth/password" class="stacked-form">
+    <label for="email">Email address</label>
+    <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@example.com">
+    <label for="password">Your code</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="the code you chose">
+    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+  </form>
+  <p class="muted small" style="margin-top:18px">
+    New here with an invite code? <a href="/join">Set up your account</a><br>
+    Been here since before codes? <a href="/set-password">Choose your code</a>
+  </p>
+  <p class="version-tag">Taskwick ${APP_VERSION}</p>
 </div>`,
   };
 }
 
 function setPasswordPage({ query }) {
   return {
-    title: 'Set your password',
+    title: 'Choose your code',
     body: `
 <div class="card auth-card">
-  <h1>Set your password</h1>
-  <p class="auth-lede">Your account was created before passwords were switched on. Choose one now.</p>
+  <h1>Choose your code</h1>
+  <p class="auth-lede">Your account was set up before codes existed. Pick one now — you'll use it every time you sign in.</p>
   ${alertBox(query)}
   <form method="post" action="/set-password" class="stacked-form">
     <label for="email">Email address</label>
     <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required
            value="${escapeHtml(query.email || '')}" placeholder="you@example.com">
-    <label for="password">Choose a password</label>
+    <label for="password">Choose your code</label>
     <input id="password" name="password" type="password" autocomplete="new-password" required minlength="8">
     <label for="confirm">Type it again</label>
     <input id="confirm" name="confirm" type="password" autocomplete="new-password" required minlength="8">
-    <button type="submit" class="btn btn-primary btn-block">Save password &amp; sign in</button>
+    <button type="submit" class="btn btn-primary btn-block">Save code &amp; sign in</button>
   </form>
-  <p class="muted small" style="margin-top:16px">At least 8 characters. <a href="/login">Back to sign in</a></p>
+  <p class="muted small" style="margin-top:16px">At least 8 characters. Write it down somewhere — there's no way to reset it yet. <a href="/login">Back to sign in</a></p>
+  <p class="version-tag">Taskwick ${APP_VERSION}</p>
 </div>`,
   };
 }
@@ -806,13 +809,17 @@ function joinPage({ query, firstEver }) {
     <label for="code">Invite code</label>
     <input id="code" name="code" type="text" required autocapitalize="characters"
            spellcheck="false" placeholder="e.g. K7P2QX" value="${escapeHtml(query.code || '')}">`}
-    <label for="password">Choose a password</label>
+    <label for="password">Choose your own code</label>
     <input id="password" name="password" type="password" autocomplete="new-password" required minlength="8">
     <label for="confirm">Type it again</label>
     <input id="confirm" name="confirm" type="password" autocomplete="new-password" required minlength="8">
     <button type="submit" class="btn btn-primary btn-block">Create my account</button>
   </form>
-  <p class="muted small" style="margin-top:16px">Already have an account? <a href="/login">Sign in</a></p>
+  <p class="muted small" style="margin-top:16px">
+    Your own code is what you'll sign in with from now on — at least 8 characters, and write it down.<br>
+    Already set up? <a href="/login">Sign in</a>
+  </p>
+  <p class="version-tag">Taskwick ${APP_VERSION}</p>
 </div>`,
   };
 }
@@ -924,6 +931,36 @@ ${pendingOutgoing.length ? `
   </form>
 </details>
 `,
+  };
+}
+
+function disconnectPage({ pair, otherEmail, stats, query }) {
+  return {
+    title: 'Disconnect',
+    body: `
+<a class="back-link" href="/pairs/${pair.id}">← Back to the board</a>
+${alertBox(query)}
+<div class="card">
+  <h1>Disconnect from ${escapeHtml(otherEmail)}?</h1>
+  <p class="auth-lede" style="text-align:left">This ends the relationship for both of you and permanently deletes everything in it.</p>
+
+  <div class="danger-list">
+    <div><strong>${stats.total}</strong> task${stats.total === 1 ? '' : 's'} deleted${stats.done ? ` (including ${stats.done} already done)` : ''}</div>
+    <div>Every note either of you wrote, deleted</div>
+    <div>The full history of what happened, deleted</div>
+    <div>${escapeHtml(otherEmail)} loses access too, without warning</div>
+  </div>
+
+  <p class="muted small">This cannot be undone. If you only want a break from it, consider leaving it in place — an inactive relationship costs nothing.</p>
+
+  <form method="post" action="/pairs/${pair.id}/disconnect" class="stacked-form">
+    <label for="confirm_email">Type <strong>${escapeHtml(otherEmail)}</strong> to confirm</label>
+    <input id="confirm_email" name="confirm_email" type="text" required
+           autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="${escapeHtml(otherEmail)}">
+    <button type="submit" class="btn btn-danger btn-block">Disconnect and delete everything</button>
+  </form>
+  <p style="margin-top:14px"><a href="/pairs/${pair.id}">No — take me back</a></p>
+</div>`,
   };
 }
 
@@ -1118,6 +1155,10 @@ ${alertBox(query)}
       </fieldset>
       <button type="submit" class="btn btn-small btn-primary" style="align-self:flex-start;margin-top:12px">Save settings</button>
     </form>
+    <p style="margin-top:16px;padding-top:14px;border-top:1px solid var(--hairline)">
+      <a class="danger-link" href="/pairs/${pair.id}/disconnect">Disconnect from ${escapeHtml(otherEmail)}</a>
+      <span class="muted small"> — ends the relationship and deletes its tasks</span>
+    </p>
   </details>
 </div>
 
@@ -1315,10 +1356,6 @@ function createRouter() {
 // src/routes/auth.js
 // ====================================================================
 
-function baseUrl(ctx) {
-  return process.env.BASE_URL || `http://${ctx.req.headers.host}`;
-}
-
 function startSession(ctx, user) {
   const session = sign({ uid: user.id, exp: Date.now() + SESSION_TTL_MS });
   ctx.setCookie(SESSION_COOKIE, session, { maxAge: Math.floor(SESSION_TTL_MS / 1000) });
@@ -1331,7 +1368,7 @@ function redirectWithError(ctx, path, message) {
 function registerAuthRoutes(router) {
   router.get('/login', (ctx) => {
     if (ctx.user) return ctx.redirect('/dashboard');
-    const { title, body } = loginPage({ query: ctx.query, emailLinks: emailDeliveryConfigured() });
+    const { title, body } = loginPage({ query: ctx.query });
     ctx.html(layout({ title, user: null, body }));
   });
 
@@ -1433,45 +1470,16 @@ function registerAuthRoutes(router) {
     ctx.redirect('/dashboard?notice=' + encodeURIComponent('Welcome to Taskwick.'));
   });
 
-  // ---- email sign-in links (only when a provider is configured) --------
+  // Sign-in links have been removed entirely — signing in is email + code,
+  // and nothing else. These two routes stay only so that any old link
+  // sitting in someone's history lands somewhere sensible instead of a 404.
 
-  router.post('/auth/request', async (ctx) => {
-    if (!emailDeliveryConfigured()) {
-      return redirectWithError(ctx, '/login',
-        'Email sign-in links are not switched on. Use your password instead.');
-    }
-    const emailRaw = ctx.body.email || '';
-    if (!isValidEmail(emailRaw)) {
-      return redirectWithError(ctx, '/login', 'Please enter a valid email address.');
-    }
-    const email = normalizeEmail(emailRaw);
-    const user = findUserByEmail(email);
-
-    // Always report success so this can't be used to enumerate accounts.
-    if (user) {
-      const token = randomToken();
-      createLoginToken(user.id, token, LOGIN_TOKEN_TTL_MS);
-      await sendEmail({
-        to: email,
-        subject: 'Your Taskwick sign-in link',
-        text: `Click this link to sign in (expires in 15 minutes):\n\n${baseUrl(ctx)}/auth/verify?token=${token}\n\nIf you didn't request this, you can ignore this email.`,
-      });
-    }
-    ctx.redirect(`/login?${new URLSearchParams({ sent: '1', email }).toString()}`);
+  router.post('/auth/request', (ctx) => {
+    redirectWithError(ctx, '/login', 'Sign-in links are no longer used. Sign in with your email and code.');
   });
 
   router.get('/auth/verify', (ctx) => {
-    const result = consumeLoginToken(ctx.query.token);
-    if (!result.ok) {
-      const messages = {
-        not_found: 'That sign-in link is invalid.',
-        used: 'That sign-in link has already been used. Request a new one.',
-        expired: 'That sign-in link has expired. Request a new one.',
-      };
-      return redirectWithError(ctx, '/login', messages[result.reason] || 'Sign-in failed.');
-    }
-    startSession(ctx, findUserById(result.userId));
-    ctx.redirect('/dashboard');
+    redirectWithError(ctx, '/login', 'Sign-in links are no longer used. Sign in with your email and code.');
   });
 
   router.post('/auth/logout', (ctx) => {
@@ -1594,6 +1602,35 @@ function registerPairRoutes(router) {
     const mode = ctx.body.mode === 'shared' ? 'shared' : 'delegated';
     updatePairSettings(pair.id, { staleDays, label, mode });
     ctx.redirect(`/pairs/${pair.id}?notice=${encodeURIComponent('Settings saved.')}`);
+  }));
+
+  // ---- ending a relationship ------------------------------------------
+  // Two steps on purpose: this throws away the shared record permanently,
+  // so it should never be one stray tap away.
+
+  router.get('/pairs/:id/disconnect', requireAuth((ctx) => {
+    const { pair, role, error } = loadPairForMember(ctx);
+    if (error) return ctx.redirect('/dashboard');
+    const stats = getPairStats(pair.id, pair.stale_days);
+    const otherEmail = role === 'delegator' ? pair.doer_email : pair.delegator_email;
+    const { title, body } = disconnectPage({ pair, otherEmail, stats, query: ctx.query });
+    ctx.html(layout({ title, user: ctx.user, body }));
+  }));
+
+  router.post('/pairs/:id/disconnect', requireAuth((ctx) => {
+    const { pair, role, error } = loadPairForMember(ctx);
+    if (error) return ctx.redirect('/dashboard');
+    const otherEmail = role === 'delegator' ? pair.doer_email : pair.delegator_email;
+
+    // Typing the other person's email is the confirmation — it makes it
+    // impossible to disconnect the wrong relationship by accident.
+    const typed = normalizeEmail(ctx.body.confirm_email || '');
+    if (typed !== otherEmail) {
+      return ctx.redirect(`/pairs/${pair.id}/disconnect?error=${encodeURIComponent(
+        `To confirm, type ${otherEmail} exactly.`)}`);
+    }
+    disconnectPair(pair.id);
+    ctx.redirect('/dashboard?notice=' + encodeURIComponent(`Disconnected from ${otherEmail}.`));
   }));
 
   router.get('/pairs/:id', requireAuth((ctx) => {
