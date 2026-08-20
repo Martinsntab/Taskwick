@@ -28,7 +28,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const STYLE_CSS = ":root {\n  --bg: #f6f7f9;\n  --card-bg: #ffffff;\n  --text: #1c1f26;\n  --muted: #6b7280;\n  --border: #e5e7eb;\n  --primary: #2563eb;\n  --primary-dark: #1d4ed8;\n  --urgent: #dc2626;\n  --urgent-bg: #fef2f2;\n  --stale-bg: #fffbeb;\n  --stale-text: #92400e;\n  --self-bg: #eef2ff;\n  --self-text: #4338ca;\n  --done-bg: #f0fdf4;\n  --radius: 12px;\n}\n\n* { box-sizing: border-box; }\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background: var(--bg);\n  color: var(--text);\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\n  -webkit-text-size-adjust: 100%;\n}\n\na { color: var(--primary); text-decoration: none; }\na:hover { text-decoration: underline; }\n\n.topbar {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 14px 16px;\n  background: var(--card-bg);\n  border-bottom: 1px solid var(--border);\n  position: sticky;\n  top: 0;\n  z-index: 10;\n}\n.brand { font-weight: 700; font-size: 1.05rem; color: var(--text); }\n.topbar .me { color: var(--muted); font-size: 0.85rem; margin-right: 8px; }\n.topbar .inline-form { display: flex; align-items: center; }\n\n.container {\n  max-width: 640px;\n  margin: 0 auto;\n  padding: 16px 16px 80px;\n}\n.container.wide { max-width: 900px; }\n\n.card {\n  background: var(--card-bg);\n  border: 1px solid var(--border);\n  border-radius: var(--radius);\n  padding: 18px;\n  margin-bottom: 16px;\n}\n\nh1 { font-size: 1.4rem; margin: 0 0 8px; }\nh2 { font-size: 1.05rem; margin: 0 0 12px; }\n.muted { color: var(--muted); }\n.small { font-size: 0.82rem; }\n\n.auth-card { margin-top: 10vh; text-align: center; }\n.auth-card h1 { font-size: 1.6rem; }\n\n.stacked-form { display: flex; flex-direction: column; gap: 6px; text-align: left; }\n.stacked-form.tight { margin-top: 10px; }\n.stacked-form label { font-size: 0.85rem; font-weight: 600; margin-top: 8px; }\n.stacked-form input[type=\"text\"],\n.stacked-form input[type=\"email\"],\n.stacked-form input[type=\"date\"],\n.stacked-form input[type=\"number\"],\n.stacked-form textarea {\n  padding: 12px;\n  border: 1px solid var(--border);\n  border-radius: 10px;\n  font-size: 1rem;\n  width: 100%;\n  background: #fff;\n  color: var(--text);\n}\n.stacked-form textarea { min-height: 70px; resize: vertical; font-family: inherit; }\n\n.radio-group { border: none; padding: 0; margin: 8px 0 0; }\n.radio-group legend { font-size: 0.85rem; font-weight: 600; padding: 0; }\n.radio-option, .checkbox-option {\n  display: flex; align-items: center; gap: 8px;\n  font-size: 0.95rem; padding: 6px 0;\n}\n\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  min-height: 44px;\n  padding: 10px 16px;\n  border-radius: 10px;\n  border: 1px solid transparent;\n  font-size: 1rem;\n  font-weight: 600;\n  cursor: pointer;\n  background: #fff;\n}\n.btn-block { width: 100%; margin-top: 12px; }\n.btn-primary { background: var(--primary); color: #fff; }\n.btn-primary:hover { background: var(--primary-dark); }\n.btn-ghost { background: #fff; border-color: var(--border); color: var(--text); }\n.btn-small { min-height: 36px; padding: 6px 12px; font-size: 0.85rem; }\n.link-btn {\n  background: none; border: none; color: var(--primary);\n  font-size: 0.85rem; cursor: pointer; padding: 4px;\n}\n\n.inline-form { display: inline-block; margin: 4px 4px 0 0; }\n\n.alert { padding: 12px 14px; border-radius: 10px; margin-bottom: 14px; font-size: 0.9rem; }\n.alert-error { background: var(--urgent-bg); color: #991b1b; border: 1px solid #fecaca; }\n.alert-notice { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }\n.dev-box { background: #fefce8; border: 1px dashed #ca8a04; border-radius: 10px; padding: 12px; margin-top: 10px; font-size: 0.85rem; word-break: break-all; }\n\n.pair-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }\n.pair-row {\n  border: 1px solid var(--border); border-radius: 10px; padding: 12px;\n  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;\n}\n.pair-row.pending { background: #fafafa; }\n.pair-link { flex: 1; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--text); }\n.pair-arrow { font-weight: 600; }\n.pair-label { color: var(--muted); font-size: 0.85rem; }\n\n.badge {\n  display: inline-block; padding: 2px 8px; border-radius: 999px;\n  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em;\n}\n.badge-role { background: #f3f4f6; color: #374151; }\n.badge-delegator { background: #ede9fe; color: #5b21b6; }\n.badge-doer { background: #dcfce7; color: #166534; }\n.badge-urgent { background: var(--urgent-bg); color: var(--urgent); }\n.badge-stale { background: var(--stale-bg); color: var(--stale-text); }\n.badge-overdue { background: #fee2e2; color: #991b1b; }\n.badge-self { background: var(--self-bg); color: var(--self-text); }\n\n.back-link { display: inline-block; margin-bottom: 10px; font-size: 0.9rem; }\n\n.pair-header { margin-bottom: 14px; }\n.settings-details { margin-top: 8px; }\n.settings-details summary { cursor: pointer; color: var(--primary); font-size: 0.85rem; }\n\n.add-task-details { margin-bottom: 18px; }\n.add-task-details summary {\n  list-style: none; cursor: pointer;\n}\n.add-task-details summary::-webkit-details-marker { display: none; }\n.add-task-details[open] summary { margin-bottom: 10px; background: var(--primary-dark); }\n.add-task-details form { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }\n\n.board {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: 18px;\n}\n@media (min-width: 720px) {\n  .board { grid-template-columns: repeat(3, 1fr); align-items: start; }\n}\n\n.board-col h2 { display: flex; align-items: center; gap: 8px; }\n.board-col .count {\n  background: var(--border); color: var(--muted); border-radius: 999px;\n  font-size: 0.75rem; padding: 1px 8px; font-weight: 700;\n}\n.empty-col { padding: 10px 0; }\n\n.task-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }\n.task-card {\n  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);\n  padding: 14px;\n}\n.task-card.urgent { border-color: var(--urgent); box-shadow: 0 0 0 1px var(--urgent); }\n.task-card.stale { background: var(--stale-bg); }\n\n.task-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; flex-wrap: wrap; }\n.task-title { font-weight: 700; font-size: 1rem; }\n.task-badges { display: flex; gap: 6px; flex-wrap: wrap; }\n.task-desc { margin: 6px 0; font-size: 0.9rem; }\n.task-meta { margin: 4px 0; }\n.done-note {\n  background: var(--done-bg); border-radius: 8px; padding: 8px 10px;\n  font-size: 0.88rem; font-style: italic; margin: 8px 0;\n}\n.task-actions { display: flex; flex-wrap: wrap; margin-top: 8px; }\n\n.note-details, .history-details { margin-top: 8px; }\n.note-details summary, .history-details summary {\n  cursor: pointer; color: var(--primary); font-size: 0.82rem;\n}\n.history-list { list-style: none; margin: 8px 0 0; padding: 0; font-size: 0.82rem; display: flex; flex-direction: column; gap: 6px; }\n.history-list li { border-top: 1px solid var(--border); padding-top: 6px; }\n.history-when { color: var(--muted); margin-right: 6px; }\n.history-note { font-style: italic; margin-top: 2px; }\n\nfooter { text-align: center; padding: 20px; color: var(--muted); font-size: 0.8rem; }\n";
+const STYLE_CSS = "/* Taskwick — light & dark, mobile-first. No frameworks, no build step. */\n\n:root {\n  color-scheme: light;\n\n  /* surfaces & ink */\n  --plane: #f9f9f7;\n  --surface: #fcfcfb;\n  --surface-2: #f2f2ef;\n  --ink: #0b0b0b;\n  --ink-2: #52514e;\n  --muted: #898781;\n  --hairline: rgba(11, 11, 11, 0.10);\n  --rule: #e1e0d9;\n\n  /* accent (blue, categorical slot 1 / sequential hue) */\n  --accent: #2a78d6;\n  --accent-strong: #256abf;\n  --accent-ink: #ffffff;\n  --accent-wash: #eaf2fd;\n  --meter-track: #cde2fb;\n\n  /* status — fixed roles, always paired with a written label */\n  --good: #0ca30c;\n  --warning: #fab219;\n  --serious: #ec835a;\n  --critical: #d03b3b;\n\n  --good-wash: #e6f6e6;\n  --good-ink: #085f08;\n  --warning-wash: #fdf0d5;\n  --warning-ink: #6b4906;\n  --serious-wash: #fceee7;\n  --serious-ink: #7c3d1e;\n  --critical-wash: #fbe9e9;\n  --critical-ink: #8e2020;\n  --neutral-wash: #eeeeea;\n\n  --radius: 14px;\n  --radius-sm: 10px;\n  --shadow: 0 1px 2px rgba(11, 11, 11, 0.05);\n}\n\n@media (prefers-color-scheme: dark) {\n  :root {\n    color-scheme: dark;\n    --plane: #0d0d0d;\n    --surface: #1a1a19;\n    --surface-2: #232322;\n    --ink: #ffffff;\n    --ink-2: #c3c2b7;\n    --muted: #898781;\n    --hairline: rgba(255, 255, 255, 0.10);\n    --rule: #2c2c2a;\n\n    --accent: #3987e5;\n    --accent-strong: #5598e7;\n    --accent-ink: #06121f;\n    --accent-wash: #17283c;\n    --meter-track: #16304f;\n\n    --good-wash: #102b10;\n    --good-ink: #7fd77f;\n    --warning-wash: #33280c;\n    --warning-ink: #f4c95f;\n    --serious-wash: #35211a;\n    --serious-ink: #f0a483;\n    --critical-wash: #351718;\n    --critical-ink: #f08f8f;\n    --neutral-wash: #262624;\n    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);\n  }\n}\n\n* { box-sizing: border-box; }\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background: var(--plane);\n  color: var(--ink);\n  font-family: system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n  -webkit-text-size-adjust: 100%;\n  line-height: 1.45;\n}\n\na { color: var(--accent); text-decoration: none; }\na:hover { text-decoration: underline; }\n\n/* ---------- top bar ---------- */\n\n.topbar {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding: 12px 16px;\n  background: var(--surface);\n  border-bottom: 1px solid var(--hairline);\n  position: sticky;\n  top: 0;\n  z-index: 20;\n}\n.brand {\n  font-weight: 680;\n  font-size: 1.05rem;\n  color: var(--ink);\n  letter-spacing: -0.01em;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n}\n.brand-dot {\n  width: 10px; height: 10px; border-radius: 50%;\n  background: var(--accent);\n  flex: none;\n}\n.topbar .inline-form { display: flex; align-items: center; gap: 8px; margin: 0; }\n.topbar .me {\n  color: var(--ink-2); font-size: 0.8rem;\n  max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\n}\n\n.container { max-width: 660px; margin: 0 auto; padding: 18px 16px 80px; }\n.container.wide { max-width: 1040px; }\n\n/* ---------- cards & type ---------- */\n\n.card {\n  background: var(--surface);\n  border: 1px solid var(--hairline);\n  border-radius: var(--radius);\n  padding: 18px;\n  margin-bottom: 16px;\n  box-shadow: var(--shadow);\n}\n\nh1 { font-size: 1.35rem; margin: 0 0 6px; letter-spacing: -0.02em; }\nh2 { font-size: 0.95rem; margin: 0 0 12px; letter-spacing: -0.01em; }\n.muted { color: var(--muted); }\n.small { font-size: 0.82rem; }\n\n.section-title {\n  display: flex; align-items: center; gap: 8px;\n  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;\n  text-transform: uppercase; color: var(--muted);\n  margin: 0 0 10px;\n}\n\n/* ---------- sign-in ---------- */\n\n.auth-card { margin-top: 8vh; text-align: center; }\n.auth-card h1 { font-size: 1.7rem; }\n.auth-lede { color: var(--ink-2); margin: 0 0 20px; }\n\n/* ---------- forms ---------- */\n\n.stacked-form { display: flex; flex-direction: column; gap: 4px; text-align: left; }\n.stacked-form.tight { margin-top: 10px; }\n.stacked-form label { font-size: 0.82rem; font-weight: 620; margin-top: 10px; color: var(--ink-2); }\n.stacked-form input[type=\"text\"],\n.stacked-form input[type=\"email\"],\n.stacked-form input[type=\"password\"],\n.stacked-form input[type=\"date\"],\n.stacked-form input[type=\"number\"],\n.stacked-form textarea {\n  padding: 12px;\n  border: 1px solid var(--rule);\n  border-radius: var(--radius-sm);\n  font-size: 1rem;\n  font-family: inherit;\n  width: 100%;\n  background: var(--plane);\n  color: var(--ink);\n}\n.stacked-form input:focus-visible,\n.stacked-form textarea:focus-visible,\n.btn:focus-visible, .switch:focus-visible, .link-btn:focus-visible {\n  outline: 2px solid var(--accent);\n  outline-offset: 2px;\n}\n.stacked-form textarea { min-height: 76px; resize: vertical; }\n\n.radio-group { border: none; padding: 0; margin: 12px 0 0; }\n.radio-group legend { font-size: 0.82rem; font-weight: 620; padding: 0; color: var(--ink-2); }\n.radio-option, .checkbox-option {\n  display: flex; align-items: center; gap: 10px;\n  font-size: 0.95rem; padding: 9px 0; cursor: pointer;\n}\n.radio-option input, .checkbox-option input { accent-color: var(--accent); width: 18px; height: 18px; }\n\n/* switch-styled checkbox (no JS) */\n.switch-row {\n  display: flex; align-items: center; justify-content: space-between;\n  gap: 12px; padding: 12px 0 4px; cursor: pointer; font-size: 0.95rem;\n}\n.switch-row input { position: absolute; opacity: 0; pointer-events: none; }\n.switch-track {\n  flex: none; width: 46px; height: 27px; border-radius: 999px;\n  background: var(--rule); position: relative; transition: background 0.15s ease;\n}\n.switch-track::after {\n  content: \"\"; position: absolute; top: 3px; left: 3px;\n  width: 21px; height: 21px; border-radius: 50%;\n  background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,0.25);\n  transition: transform 0.15s ease;\n}\n.switch-row input:checked + .switch-track { background: var(--critical); }\n.switch-row input:checked + .switch-track::after { transform: translateX(19px); }\n.switch-row input:focus-visible + .switch-track { outline: 2px solid var(--accent); outline-offset: 2px; }\n\n/* ---------- buttons ---------- */\n\n.btn {\n  display: inline-flex; align-items: center; justify-content: center; gap: 6px;\n  min-height: 44px; padding: 10px 16px;\n  border-radius: var(--radius-sm); border: 1px solid transparent;\n  font-size: 0.95rem; font-weight: 620; font-family: inherit;\n  cursor: pointer; background: var(--surface); color: var(--ink);\n}\n.btn-block { width: 100%; margin-top: 14px; }\n.btn-primary { background: var(--accent); color: var(--accent-ink); }\n.btn-primary:hover { background: var(--accent-strong); }\n.btn-ghost { background: var(--surface); border-color: var(--rule); color: var(--ink); }\n.btn-ghost:hover { background: var(--surface-2); }\n.btn-small { min-height: 38px; padding: 7px 13px; font-size: 0.85rem; }\n.link-btn {\n  background: none; border: none; color: var(--accent);\n  font-size: 0.82rem; cursor: pointer; padding: 6px; font-family: inherit;\n}\n.inline-form { display: inline-block; margin: 6px 6px 0 0; }\n\n/* urgent toggle rendered as a switch, but it's a real submit button (no JS) */\n.switch {\n  display: inline-flex; align-items: center; gap: 9px;\n  background: none; border: none; cursor: pointer; padding: 6px 0;\n  font-size: 0.82rem; font-weight: 600; color: var(--ink-2); font-family: inherit;\n}\n.switch .track {\n  width: 38px; height: 22px; border-radius: 999px; background: var(--rule);\n  position: relative; flex: none; transition: background 0.15s ease;\n}\n.switch .track::after {\n  content: \"\"; position: absolute; top: 3px; left: 3px;\n  width: 16px; height: 16px; border-radius: 50%; background: var(--surface);\n  box-shadow: 0 1px 2px rgba(0,0,0,0.25); transition: transform 0.15s ease;\n}\n.switch[aria-pressed=\"true\"] .track { background: var(--critical); }\n.switch[aria-pressed=\"true\"] .track::after { transform: translateX(16px); }\n.switch[aria-pressed=\"true\"] { color: var(--critical-ink); }\n\n/* ---------- alerts ---------- */\n\n.alert {\n  padding: 12px 14px; border-radius: var(--radius-sm);\n  margin-bottom: 14px; font-size: 0.9rem; border: 1px solid transparent;\n}\n.alert-error { background: var(--critical-wash); color: var(--critical-ink); border-color: var(--hairline); }\n.alert-notice { background: var(--accent-wash); color: var(--ink); border-color: var(--hairline); }\n.dev-box {\n  background: var(--warning-wash); color: var(--warning-ink);\n  border: 1px dashed var(--warning); border-radius: var(--radius-sm);\n  padding: 14px; margin-top: 12px; font-size: 0.85rem; word-break: break-all; text-align: left;\n}\n.dev-box a { color: inherit; text-decoration: underline; font-weight: 600; }\n\n/* ---------- avatars ---------- */\n\n.avatar {\n  width: 30px; height: 30px; border-radius: 50%; flex: none;\n  display: inline-flex; align-items: center; justify-content: center;\n  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.02em;\n  background: var(--accent-wash); color: var(--accent-strong);\n  border: 1px solid var(--hairline); text-transform: uppercase;\n}\n.avatar-sm { width: 24px; height: 24px; font-size: 0.66rem; }\n\n/* ---------- pair list (dashboard) ---------- */\n\n.pair-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }\n.pair-row {\n  border: 1px solid var(--hairline); border-radius: var(--radius);\n  background: var(--surface); padding: 0;\n}\n.pair-row.pending { padding: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }\n.pair-link { display: block; padding: 14px; color: var(--ink); }\n.pair-link:hover { text-decoration: none; background: var(--surface-2); border-radius: var(--radius); }\n.pair-top { display: flex; align-items: center; gap: 10px; }\n.pair-who { flex: 1; min-width: 0; }\n.pair-arrow { font-weight: 640; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n.pair-sub { color: var(--muted); font-size: 0.8rem; }\n.chev { color: var(--muted); flex: none; }\n\n/* ---------- meter (single ratio against a limit) ---------- */\n\n.meter {\n  height: 6px; border-radius: 999px; background: var(--meter-track);\n  overflow: hidden; margin-top: 10px;\n}\n.meter > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; }\n.meter-row {\n  display: flex; align-items: center; justify-content: space-between;\n  gap: 10px; margin-top: 8px; font-size: 0.8rem; color: var(--ink-2);\n}\n.counts { display: flex; gap: 6px; flex-wrap: wrap; }\n.count-chip {\n  display: inline-flex; align-items: center; gap: 5px;\n  background: var(--neutral-wash); color: var(--ink-2);\n  border-radius: 999px; padding: 2px 9px; font-size: 0.76rem; font-weight: 600;\n}\n.count-chip.is-critical { background: var(--critical-wash); color: var(--critical-ink); }\n.count-chip.is-warning { background: var(--warning-wash); color: var(--warning-ink); }\n.count-chip .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }\n\n/* ---------- badges ---------- */\n\n.badge {\n  display: inline-flex; align-items: center; gap: 5px;\n  padding: 3px 9px; border-radius: 999px;\n  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;\n  background: var(--neutral-wash); color: var(--ink-2); white-space: nowrap;\n}\n.badge .dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }\n.badge-delegator { background: var(--accent-wash); color: var(--accent-strong); }\n.badge-doer { background: var(--good-wash); color: var(--good-ink); }\n.badge-urgent { background: var(--critical-wash); color: var(--critical-ink); }\n.badge-urgent .dot { background: var(--critical); }\n.badge-stale { background: var(--warning-wash); color: var(--warning-ink); }\n.badge-stale .dot { background: var(--warning); }\n.badge-overdue { background: var(--serious-wash); color: var(--serious-ink); }\n.badge-overdue .dot { background: var(--serious); }\n.badge-self { background: var(--neutral-wash); color: var(--ink-2); }\n\n/* ---------- pair page header ---------- */\n\n.back-link { display: inline-block; margin-bottom: 12px; font-size: 0.88rem; color: var(--muted); }\n.pair-header { margin-bottom: 16px; }\n.pair-header-top { display: flex; align-items: flex-start; gap: 12px; }\n.pair-header-top .avatar { margin-top: 2px; }\n.pair-header h1 { margin: 0; }\n.pair-header .pair-sub { margin-top: 2px; }\n.pair-progress { margin-top: 14px; }\n\n.settings-details { margin-top: 12px; }\n.settings-details summary,\n.note-details summary,\n.history-details summary {\n  cursor: pointer; color: var(--accent); font-size: 0.82rem; font-weight: 600;\n  list-style: none; display: inline-flex; align-items: center; gap: 5px;\n}\n.settings-details summary::-webkit-details-marker,\n.note-details summary::-webkit-details-marker,\n.history-details summary::-webkit-details-marker { display: none; }\n.settings-details summary::before,\n.note-details summary::before,\n.history-details summary::before { content: \"▸\"; font-size: 0.7rem; }\n.settings-details[open] summary::before,\n.note-details[open] summary::before,\n.history-details[open] summary::before { content: \"▾\"; }\n\n/* ---------- add task ---------- */\n\n.add-task-details { margin-bottom: 20px; }\n.add-task-details > summary { list-style: none; cursor: pointer; }\n.add-task-details > summary::-webkit-details-marker { display: none; }\n.add-task-details[open] > summary { margin-bottom: 12px; background: var(--accent-strong); }\n.add-task-details form {\n  background: var(--surface); border: 1px solid var(--hairline);\n  border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);\n}\n\n/* ---------- board ---------- */\n\n.board { display: grid; grid-template-columns: 1fr; gap: 22px; }\n@media (min-width: 780px) { .board { grid-template-columns: repeat(3, 1fr); align-items: start; } }\n\n.board-col h2 { display: flex; align-items: center; gap: 8px; }\n.board-col .count {\n  background: var(--neutral-wash); color: var(--ink-2); border-radius: 999px;\n  font-size: 0.72rem; padding: 1px 8px; font-weight: 700;\n}\n.col-mark { width: 8px; height: 8px; border-radius: 50%; flex: none; }\n.col-todo .col-mark { background: var(--muted); }\n.col-in_progress .col-mark { background: var(--accent); }\n.col-done .col-mark { background: var(--good); }\n.empty-col {\n  padding: 16px; border: 1px dashed var(--rule); border-radius: var(--radius);\n  text-align: center; color: var(--muted); font-size: 0.85rem;\n}\n\n.task-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }\n.task-card {\n  background: var(--surface); border: 1px solid var(--hairline);\n  border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow);\n  border-left: 3px solid transparent;\n}\n.task-card.urgent { border-left-color: var(--critical); }\n.task-card.stale { border-left-color: var(--warning); }\n.task-card.is-done .task-title { color: var(--ink-2); }\n\n.task-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; }\n.task-title { font-weight: 660; font-size: 0.98rem; letter-spacing: -0.01em; }\n.task-badges { display: flex; gap: 6px; flex-wrap: wrap; }\n.task-desc { margin: 8px 0 0; font-size: 0.89rem; color: var(--ink-2); }\n.task-meta { margin: 8px 0 0; font-size: 0.78rem; color: var(--muted); }\n.done-note {\n  background: var(--good-wash); color: var(--good-ink); border-radius: var(--radius-sm);\n  padding: 10px 12px; font-size: 0.86rem; margin: 10px 0 0;\n}\n.task-actions {\n  display: flex; flex-wrap: wrap; align-items: center; gap: 4px;\n  margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--hairline);\n}\n\n.note-details, .history-details { margin-top: 10px; }\n.history-list {\n  list-style: none; margin: 10px 0 0; padding: 0; font-size: 0.8rem;\n  display: flex; flex-direction: column; gap: 8px;\n}\n.history-list li { border-left: 2px solid var(--rule); padding: 0 0 0 10px; }\n.history-when { color: var(--muted); }\n.history-what { font-weight: 600; }\n.history-note { font-style: italic; margin-top: 3px; color: var(--ink-2); }\n\n/* ---------- role clarity ---------- */\n\n.role-banner {\n  display: flex; flex-direction: column; gap: 2px;\n  border-radius: var(--radius); padding: 12px 14px; margin-top: 14px;\n  border: 1px solid var(--hairline); border-left-width: 3px;\n  background: var(--surface);\n}\n.role-title { font-weight: 680; font-size: 0.92rem; }\n.role-detail { font-size: 0.84rem; color: var(--ink-2); }\n.role-delegating { border-left-color: var(--accent); background: var(--accent-wash); }\n.role-doing { border-left-color: var(--good); background: var(--good-wash); }\n.role-doing .role-detail, .role-doing .role-title { color: var(--good-ink); }\n.role-shared { border-left-color: var(--muted); background: var(--neutral-wash); }\n\n.role-word { font-weight: 640; }\n.role-word.role-delegator { color: var(--accent-strong); }\n.role-word.role-doer { color: var(--good-ink); }\n.role-word.role-shared { color: var(--ink-2); }\n\n/* ---------- per-person notes ---------- */\n\n.notes { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }\n.note {\n  background: var(--surface-2); border-radius: var(--radius-sm);\n  padding: 9px 11px; font-size: 0.86rem;\n}\n.note-mine { background: var(--good-wash); }\n.note-head { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }\n.note-who { font-weight: 640; font-size: 0.8rem; }\n.note-when { margin-left: auto; }\n.note-body { color: var(--ink-2); }\n.note-mine .note-body, .note-mine .note-who { color: var(--good-ink); }\n\n/* ---------- invite code callout ---------- */\n\n.code-callout {\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 1.15rem; font-weight: 700; letter-spacing: 0.14em;\n  background: var(--surface); border: 1px dashed var(--accent);\n  border-radius: var(--radius-sm); padding: 10px 14px; display: inline-block; margin-top: 8px;\n}\n\n.empty-state { text-align: center; padding: 26px 16px; color: var(--muted); }\n.empty-state strong { display: block; color: var(--ink); margin-bottom: 4px; font-size: 0.95rem; }\n";
 
 // ====================================================================
 // src/util.js
@@ -133,6 +133,60 @@ function randomToken(bytes = 32) {
   return crypto.randomBytes(bytes).toString('hex');
 }
 
+/**
+ * Short, human-readable invite code the inviter reads out or pastes into a
+ * chat message. Excludes characters that get misread out loud (0/O, 1/I/L).
+ */
+function generateInviteCode() {
+  const alphabet = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  const bytes = crypto.randomBytes(6);
+  return Array.from(bytes, (b) => alphabet[b % alphabet.length]).join('');
+}
+
+// ---- password hashing (scrypt, from node:crypto — no dependencies) ----
+// scrypt is deliberately slow and memory-hard, which is what makes a stolen
+// database of hashes impractical to crack.
+
+const SCRYPT_KEYLEN = 64;
+const SCRYPT_OPTS = { N: 16384, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
+
+function hashPassword(password) {
+  return new Promise((resolve, reject) => {
+    const salt = crypto.randomBytes(16).toString('hex');
+    crypto.scrypt(password, salt, SCRYPT_KEYLEN, SCRYPT_OPTS, (err, derived) => {
+      if (err) return reject(err);
+      resolve(`scrypt$${salt}$${derived.toString('hex')}`);
+    });
+  });
+}
+
+function verifyPassword(password, stored) {
+  return new Promise((resolve) => {
+    if (!stored || typeof stored !== 'string') return resolve(false);
+    const [scheme, salt, expectedHex] = stored.split('$');
+    if (scheme !== 'scrypt' || !salt || !expectedHex) return resolve(false);
+    crypto.scrypt(password, salt, SCRYPT_KEYLEN, SCRYPT_OPTS, (err, derived) => {
+      if (err) return resolve(false);
+      const expected = Buffer.from(expectedHex, 'hex');
+      if (expected.length !== derived.length) return resolve(false);
+      resolve(crypto.timingSafeEqual(expected, derived));
+    });
+  });
+}
+
+function passwordProblem(password) {
+  if (typeof password !== 'string' || password.length < 8) {
+    return 'Password must be at least 8 characters.';
+  }
+  if (password.length > 200) return 'That password is too long.';
+  return null;
+}
+
+/** True when a real email provider is configured, so links can actually arrive. */
+function emailDeliveryConfigured() {
+  return Boolean(process.env.RESEND_API_KEY);
+}
+
 function isValidEmail(email) {
   return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
@@ -219,6 +273,61 @@ CREATE INDEX IF NOT EXISTS idx_pairs_delegator ON pairs(delegator_user_id);
 CREATE INDEX IF NOT EXISTS idx_pairs_doer ON pairs(doer_user_id);
 `);
 
+// ---- migrations ------------------------------------------------------
+// These run on every boot and must be safe against a database that already
+// holds live data (Taskwick keeps its SQLite file on a persistent volume).
+// Each step checks whether it has already been applied.
+
+function columnExists(table, column) {
+  return db.prepare(`PRAGMA table_info(${table})`).all().some((c) => c.name === column);
+}
+
+function addColumn(table, column, definition) {
+  if (!columnExists(table, column)) {
+    db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+  }
+}
+
+// Passwords (added alongside the original magic-link sign-in).
+addColumn('users', 'password_hash', 'TEXT');
+
+// Relationship mode: 'delegated' (one person gives tasks, the other does
+// them) or 'shared' (equal partners — both can do everything).
+addColumn('pairs', 'mode', "TEXT NOT NULL DEFAULT 'delegated'");
+
+// One-time code the inviter passes along out-of-band so a new person can
+// claim their account without needing email delivery to work.
+addColumn('pairs', 'invite_code', 'TEXT');
+
+// One note per person per task — each person owns and edits only their own,
+// so neither side can rewrite the other's record of what happened.
+db.exec(`
+CREATE TABLE IF NOT EXISTS task_notes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  task_id INTEGER NOT NULL REFERENCES tasks(id),
+  user_id INTEGER NOT NULL REFERENCES users(id),
+  note TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE(task_id, user_id)
+);
+CREATE INDEX IF NOT EXISTS idx_task_notes_task ON task_notes(task_id);
+`);
+
+// Carry any pre-existing single done_note across to the new per-person
+// notes table, attributed to the doer who wrote it. Runs once — the INSERT
+// is skipped for tasks that already have a note row.
+if (columnExists('tasks', 'done_note')) {
+  db.exec(`
+    INSERT OR IGNORE INTO task_notes (task_id, user_id, note, created_at, updated_at)
+    SELECT t.id, p.doer_user_id, t.done_note,
+           COALESCE(t.done_at, t.created_at), COALESCE(t.done_at, t.created_at)
+    FROM tasks t
+    JOIN pairs p ON p.id = t.pair_id
+    WHERE t.done_note IS NOT NULL AND TRIM(t.done_note) != ''
+  `);
+}
+
 function nowIso() {
   return new Date().toISOString();
 }
@@ -246,6 +355,26 @@ function findOrCreateUser(email) {
   return findUserById(Number(info.lastInsertRowid));
 }
 
+function setUserPassword(userId, passwordHash) {
+  db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(passwordHash, userId);
+}
+
+function countUsers() {
+  return db.prepare('SELECT COUNT(*) AS n FROM users').get().n;
+}
+
+/**
+ * A pending invite addressed to this email carrying this code. Used to let a
+ * brand-new person claim their account without email delivery working.
+ */
+function findPendingInviteByCode(email, code) {
+  return db.prepare(`
+    SELECT p.* FROM pairs p
+    JOIN users u ON u.id = p.delegator_user_id OR u.id = p.doer_user_id
+    WHERE p.status = 'pending' AND UPPER(p.invite_code) = UPPER(?) AND u.email = ?
+  `).get(code, email);
+}
+
 // ---- login tokens ------------------------------------------------------
 
 function createLoginToken(userId, token, ttlMs) {
@@ -266,11 +395,12 @@ function consumeLoginToken(token) {
 
 // ---- pairs ---------------------------------------------------------------
 
-function createPair({ delegatorUserId, doerUserId, invitedByUserId, label }) {
+function createPair({ delegatorUserId, doerUserId, invitedByUserId, label, mode, inviteCode }) {
   return db.prepare(`
-    INSERT INTO pairs (delegator_user_id, doer_user_id, invited_by_user_id, label, status)
-    VALUES (?, ?, ?, ?, 'pending')
-  `).run(delegatorUserId, doerUserId, invitedByUserId, label || null);
+    INSERT INTO pairs (delegator_user_id, doer_user_id, invited_by_user_id, label, status, mode, invite_code)
+    VALUES (?, ?, ?, ?, 'pending', ?, ?)
+  `).run(delegatorUserId, doerUserId, invitedByUserId, label || null,
+         mode === 'shared' ? 'shared' : 'delegated', inviteCode || null);
 }
 
 function findPairBetween(delegatorUserId, doerUserId) {
@@ -307,15 +437,35 @@ function deletePair(id) {
   db.prepare('DELETE FROM pairs WHERE id = ?').run(id);
 }
 
-function updatePairSettings(id, { staleDays, label }) {
-  db.prepare('UPDATE pairs SET stale_days = ?, label = ? WHERE id = ?')
-    .run(staleDays, label || null, id);
+function updatePairSettings(id, { staleDays, label, mode }) {
+  db.prepare('UPDATE pairs SET stale_days = ?, label = ?, mode = ? WHERE id = ?')
+    .run(staleDays, label || null, mode === 'shared' ? 'shared' : 'delegated', id);
+}
+
+function clearInviteCode(id) {
+  db.prepare('UPDATE pairs SET invite_code = NULL WHERE id = ?').run(id);
 }
 
 function roleInPair(pair, userId) {
   if (pair.delegator_user_id === userId) return 'delegator';
   if (pair.doer_user_id === userId) return 'doer';
   return null;
+}
+
+/**
+ * Who may do what, given the relationship mode. In 'shared' mode the two
+ * people are equals; in 'delegated' mode the doer owns the status column so
+ * the record of what actually happened stays theirs.
+ */
+function permissionsFor(pair, role) {
+  const shared = pair.mode === 'shared';
+  return {
+    shared,
+    canAddTasks: true,
+    canChangeStatus: shared || role === 'doer',
+    canAddNotes: true,
+    canToggleUrgentOwn: true,
+  };
 }
 
 // ---- tasks -----------------------------------------------------------
@@ -341,23 +491,54 @@ function listTasksForPair(pairId) {
   return db.prepare('SELECT * FROM tasks WHERE pair_id = ? ORDER BY created_at DESC').all(pairId);
 }
 
-function updateTaskStatus(taskId, { toStatus, actorUserId, note }) {
+function updateTaskStatus(taskId, { toStatus, actorUserId }) {
   const task = getTaskById(taskId);
   const fromStatus = task.status;
   const isDone = toStatus === 'done';
   db.prepare(`
     UPDATE tasks
     SET status = ?, status_changed_at = datetime('now'),
-        done_at = CASE WHEN ? = 1 THEN datetime('now') ELSE NULL END,
-        done_note = CASE WHEN ? = 1 THEN COALESCE(?, done_note) ELSE done_note END
+        done_at = CASE WHEN ? = 1 THEN datetime('now') ELSE NULL END
     WHERE id = ?
-  `).run(toStatus, isDone ? 1 : 0, isDone ? 1 : 0, note || null, taskId);
-  addTaskEvent({ taskId, actorUserId, type: 'status_change', fromStatus, toStatus, note: note || null });
+  `).run(toStatus, isDone ? 1 : 0, taskId);
+  addTaskEvent({ taskId, actorUserId, type: 'status_change', fromStatus, toStatus });
 }
 
-function updateTaskNote(taskId, { note, actorUserId }) {
-  db.prepare('UPDATE tasks SET done_note = ? WHERE id = ?').run(note || null, taskId);
-  addTaskEvent({ taskId, actorUserId, type: 'note', note: note || null });
+/**
+ * Save the acting user's own note on a task. Each person has exactly one
+ * note per task and can only ever write their own — nobody can edit or
+ * delete what the other person recorded.
+ */
+function saveMyNote(taskId, { note, actorUserId }) {
+  const text = (note || '').trim();
+  if (!text) {
+    db.prepare('DELETE FROM task_notes WHERE task_id = ? AND user_id = ?').run(taskId, actorUserId);
+  } else {
+    db.prepare(`
+      INSERT INTO task_notes (task_id, user_id, note) VALUES (?, ?, ?)
+      ON CONFLICT(task_id, user_id)
+      DO UPDATE SET note = excluded.note, updated_at = datetime('now')
+    `).run(taskId, actorUserId, text);
+  }
+  addTaskEvent({ taskId, actorUserId, type: 'note', note: text || null });
+}
+
+function listTaskNotes(taskId) {
+  return db.prepare(`
+    SELECT n.*, u.email AS author_email
+    FROM task_notes n JOIN users u ON u.id = n.user_id
+    WHERE n.task_id = ? ORDER BY n.updated_at ASC
+  `).all(taskId);
+}
+
+function listNotesForPair(pairId) {
+  return db.prepare(`
+    SELECT n.*, u.email AS author_email
+    FROM task_notes n
+    JOIN users u ON u.id = n.user_id
+    JOIN tasks t ON t.id = n.task_id
+    WHERE t.pair_id = ?
+  `).all(pairId);
 }
 
 function setTaskUrgent(taskId, { isUrgent, actorUserId }) {
@@ -380,6 +561,36 @@ function listTaskEvents(taskId) {
     WHERE e.task_id = ?
     ORDER BY e.created_at ASC, e.id ASC
   `).all(taskId);
+}
+
+/**
+ * Per-pair task counts used by the dashboard meter and count chips.
+ * `staleOpen` counts open tasks whose status hasn't moved within the pair's
+ * configured stale window, computed in SQL so the dashboard stays one query
+ * per pair rather than loading every task.
+ */
+function getPairStats(pairId, staleDays) {
+  const row = db.prepare(`
+    SELECT
+      COUNT(*) AS total,
+      SUM(CASE WHEN status = 'todo' THEN 1 ELSE 0 END) AS todo,
+      SUM(CASE WHEN status = 'in_progress' THEN 1 ELSE 0 END) AS in_progress,
+      SUM(CASE WHEN status = 'done' THEN 1 ELSE 0 END) AS done,
+      SUM(CASE WHEN status != 'done' AND is_urgent = 1 THEN 1 ELSE 0 END) AS urgentOpen,
+      SUM(CASE WHEN status != 'done'
+                AND julianday('now') - julianday(status_changed_at) >= ?
+               THEN 1 ELSE 0 END) AS staleOpen
+    FROM tasks WHERE pair_id = ?
+  `).get(staleDays, pairId);
+
+  return {
+    total: row.total || 0,
+    todo: row.todo || 0,
+    in_progress: row.in_progress || 0,
+    done: row.done || 0,
+    urgentOpen: row.urgentOpen || 0,
+    staleOpen: row.staleOpen || 0,
+  };
 }
 
 // ---- reporting (weekly digest) ---------------------------------------
@@ -452,13 +663,14 @@ function layout({ title, user, body, wide }) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <title>${escapeHtml(title)} · Taskwick</title>
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
 </head>
 <body>
 <header class="topbar">
-  <a class="brand" href="${user ? '/dashboard' : '/login'}">Taskwick</a>
+  <a class="brand" href="${user ? '/dashboard' : '/login'}"><span class="brand-dot"></span>Taskwick</a>
   ${user ? `<form method="post" action="/auth/logout" class="inline-form">
       <span class="me">${escapeHtml(user.email)}</span>
       <button class="link-btn" type="submit">Sign out</button>
@@ -478,60 +690,176 @@ function alertBox(query) {
   return out;
 }
 
-function loginPage({ query }) {
+function initials(email) {
+  const name = String(email || '').split('@')[0];
+  const parts = name.split(/[._-]+/).filter(Boolean);
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]);
+  return name.slice(0, 2) || '?';
+}
+
+function avatar(email, small) {
+  return `<span class="avatar${small ? ' avatar-sm' : ''}" title="${escapeHtml(email)}">${escapeHtml(initials(email))}</span>`;
+}
+
+/** A single ratio against a limit — rendered as a meter, not a chart. */
+function meter(done, total) {
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  return `<div class="meter" role="img" aria-label="${done} of ${total} tasks done">
+    <span style="width:${pct}%"></span>
+  </div>`;
+}
+
+function countChips(stats) {
+  const chips = [];
+  if (stats.urgentOpen > 0) {
+    chips.push(`<span class="count-chip is-critical"><span class="dot"></span>${stats.urgentOpen} urgent</span>`);
+  }
+  if (stats.staleOpen > 0) {
+    chips.push(`<span class="count-chip is-warning"><span class="dot"></span>${stats.staleOpen} gone quiet</span>`);
+  }
+  const open = stats.todo + stats.in_progress;
+  chips.push(`<span class="count-chip">${open} open</span>`);
+  return `<div class="counts">${chips.join('')}</div>`;
+}
+
+function loginPage({ query, emailLinks }) {
   const sent = query.sent === '1';
-  const devLink = query.devlink;
   return {
     title: 'Sign in',
     body: `
 <div class="card auth-card">
   <h1>Taskwick</h1>
-  <p class="muted">See what's actually gotten done — without making a call.</p>
+  <p class="auth-lede">See what's actually gotten done — without making a call.</p>
   ${alertBox(query)}
   ${sent ? `
     <div class="alert alert-notice">
-      Check <strong>${escapeHtml(query.email || 'your email')}</strong> for a sign-in link. It expires in 15 minutes.
+      If there's an account for <strong>${escapeHtml(query.email || 'that address')}</strong>,
+      a sign-in link is on its way. It expires in 15 minutes.
     </div>
-    ${devLink ? `<div class="dev-box">
-      <p><strong>Dev mode</strong> — no email provider is configured, so here is the link directly:</p>
-      <p><a href="${escapeHtml(devLink)}">${escapeHtml(devLink)}</a></p>
-    </div>` : ''}
+    <p><a href="/login">Back to sign in</a></p>
   ` : `
-    <form method="post" action="/auth/request" class="stacked-form">
+    <form method="post" action="/auth/password" class="stacked-form">
       <label for="email">Email address</label>
       <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@example.com">
-      <button type="submit" class="btn btn-primary btn-block">Send sign-in link</button>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
     </form>
-    <p class="muted small">No password needed — we'll email you a one-time link.</p>
+
+    ${emailLinks ? `
+    <details class="settings-details" style="margin-top:16px">
+      <summary>Email me a sign-in link instead</summary>
+      <form method="post" action="/auth/request" class="stacked-form tight">
+        <label for="link_email">Email address</label>
+        <input id="link_email" name="email" type="email" inputmode="email" required placeholder="you@example.com">
+        <button type="submit" class="btn btn-ghost btn-block">Send me a link</button>
+      </form>
+    </details>` : ''}
+
+    <p class="muted small" style="margin-top:18px">
+      Got an invite code? <a href="/join">Join here</a><br>
+      Set up before passwords existed? <a href="/set-password">Set your password</a>
+    </p>
   `}
 </div>`,
   };
 }
 
+function setPasswordPage({ query }) {
+  return {
+    title: 'Set your password',
+    body: `
+<div class="card auth-card">
+  <h1>Set your password</h1>
+  <p class="auth-lede">Your account was created before passwords were switched on. Choose one now.</p>
+  ${alertBox(query)}
+  <form method="post" action="/set-password" class="stacked-form">
+    <label for="email">Email address</label>
+    <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required
+           value="${escapeHtml(query.email || '')}" placeholder="you@example.com">
+    <label for="password">Choose a password</label>
+    <input id="password" name="password" type="password" autocomplete="new-password" required minlength="8">
+    <label for="confirm">Type it again</label>
+    <input id="confirm" name="confirm" type="password" autocomplete="new-password" required minlength="8">
+    <button type="submit" class="btn btn-primary btn-block">Save password &amp; sign in</button>
+  </form>
+  <p class="muted small" style="margin-top:16px">At least 8 characters. <a href="/login">Back to sign in</a></p>
+</div>`,
+  };
+}
+
+function joinPage({ query, firstEver }) {
+  return {
+    title: 'Join Taskwick',
+    body: `
+<div class="card auth-card">
+  <h1>${firstEver ? 'Create the first account' : 'Join Taskwick'}</h1>
+  <p class="auth-lede">${firstEver
+    ? 'This Taskwick has no accounts yet — this one becomes the first.'
+    : 'Enter the invite code the person who invited you sent over.'}</p>
+  ${alertBox(query)}
+  <form method="post" action="/join" class="stacked-form">
+    <label for="email">Your email address</label>
+    <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required
+           value="${escapeHtml(query.email || '')}" placeholder="you@example.com">
+    ${firstEver ? '' : `
+    <label for="code">Invite code</label>
+    <input id="code" name="code" type="text" required autocapitalize="characters"
+           spellcheck="false" placeholder="e.g. K7P2QX" value="${escapeHtml(query.code || '')}">`}
+    <label for="password">Choose a password</label>
+    <input id="password" name="password" type="password" autocomplete="new-password" required minlength="8">
+    <label for="confirm">Type it again</label>
+    <input id="confirm" name="confirm" type="password" autocomplete="new-password" required minlength="8">
+    <button type="submit" class="btn btn-primary btn-block">Create my account</button>
+  </form>
+  <p class="muted small" style="margin-top:16px">Already have an account? <a href="/login">Sign in</a></p>
+</div>`,
+  };
+}
+
 function pairRoleLabel(pair, userId) {
-  if (pair.delegator_user_id === userId) {
-    return { arrow: `You → ${pair.doer_email}`, role: 'delegator', otherEmail: pair.doer_email };
+  const isDelegator = pair.delegator_user_id === userId;
+  const otherEmail = isDelegator ? pair.doer_email : pair.delegator_email;
+  if (pair.mode === 'shared') {
+    return { arrow: `You ↔ ${otherEmail}`, role: 'shared', otherEmail, roleWord: 'equal partners' };
   }
-  return { arrow: `${pair.delegator_email} → You`, role: 'doer', otherEmail: pair.delegator_email };
+  if (isDelegator) {
+    return { arrow: `You → ${pair.doer_email}`, role: 'delegator', otherEmail, roleWord: 'you give tasks' };
+  }
+  return { arrow: `${pair.delegator_email} → You`, role: 'doer', otherEmail, roleWord: 'you do tasks' };
 }
 
 function dashboardPage({ user, active, pendingIncoming, pendingOutgoing, query }) {
   const pairRow = (p) => {
-    const { arrow, role } = pairRoleLabel(p, user.id);
+    const { arrow, role, otherEmail, roleWord } = pairRoleLabel(p, user.id);
+    const s = p.stats || { todo: 0, in_progress: 0, done: 0, total: 0, urgentOpen: 0, staleOpen: 0 };
     return `<li class="pair-row">
       <a class="pair-link" href="/pairs/${p.id}">
-        <span class="pair-arrow">${escapeHtml(arrow)}</span>
-        <span class="badge badge-role badge-${role}">${role === 'delegator' ? 'you delegate' : 'you do'}</span>
-        ${p.label ? `<span class="pair-label">${escapeHtml(p.label)}</span>` : ''}
+        <div class="pair-top">
+          ${avatar(otherEmail)}
+          <span class="pair-who">
+            <span class="pair-arrow">${escapeHtml(arrow)}</span>
+            <span class="pair-sub">${p.label ? escapeHtml(p.label) + ' · ' : ''}<span class="role-word role-${role}">${escapeHtml(roleWord)}</span></span>
+          </span>
+          <span class="chev">›</span>
+        </div>
+        ${meter(s.done, s.total)}
+        <div class="meter-row">
+          ${countChips(s)}
+          <span class="muted small">${s.done}/${s.total} done</span>
+        </div>
       </a>
     </li>`;
   };
 
   const incomingRow = (p) => {
-    const { arrow } = pairRoleLabel(p, user.id);
+    const { arrow, otherEmail } = pairRoleLabel(p, user.id);
     return `<li class="pair-row pending">
-      <span class="pair-arrow">${escapeHtml(arrow)}</span>
-      <span class="muted small">wants to connect</span>
+      ${avatar(otherEmail)}
+      <span class="pair-who">
+        <span class="pair-arrow">${escapeHtml(arrow)}</span>
+        <span class="pair-sub">wants to connect</span>
+      </span>
       <form method="post" action="/pairs/${p.id}/accept" class="inline-form">
         <button class="btn btn-small btn-primary" type="submit">Accept</button>
       </form>
@@ -542,10 +870,13 @@ function dashboardPage({ user, active, pendingIncoming, pendingOutgoing, query }
   };
 
   const outgoingRow = (p) => {
-    const { arrow } = pairRoleLabel(p, user.id);
+    const { arrow, otherEmail } = pairRoleLabel(p, user.id);
     return `<li class="pair-row pending">
-      <span class="pair-arrow">${escapeHtml(arrow)}</span>
-      <span class="muted small">waiting for them to confirm</span>
+      ${avatar(otherEmail)}
+      <span class="pair-who">
+        <span class="pair-arrow">${escapeHtml(arrow)}</span>
+        <span class="pair-sub">waiting for them to confirm</span>
+      </span>
     </li>`;
   };
 
@@ -553,38 +884,45 @@ function dashboardPage({ user, active, pendingIncoming, pendingOutgoing, query }
     title: 'Dashboard',
     body: `
 ${alertBox(query)}
-<section class="card">
-  <h2>Invite someone</h2>
+
+${pendingIncoming.length ? `
+<section>
+  <p class="section-title">Pending invites for you</p>
+  <ul class="pair-list">${pendingIncoming.map(incomingRow).join('')}</ul>
+</section>
+<div style="height:20px"></div>` : ''}
+
+<section>
+  <p class="section-title">Your pairs</p>
+  ${active.length
+    ? `<ul class="pair-list">${active.map(pairRow).join('')}</ul>`
+    : `<div class="card empty-state"><strong>No pairs yet</strong>Invite someone below to get started.</div>`}
+</section>
+
+${pendingOutgoing.length ? `
+<div style="height:20px"></div>
+<section>
+  <p class="section-title">Waiting on them</p>
+  <ul class="pair-list">${pendingOutgoing.map(outgoingRow).join('')}</ul>
+</section>` : ''}
+
+<div style="height:24px"></div>
+<details class="add-task-details">
+  <summary class="btn btn-primary btn-block">+ Invite someone</summary>
   <form method="post" action="/pairs" class="stacked-form">
     <label for="email">Their email</label>
     <input id="email" name="email" type="email" required placeholder="colleague@example.com">
     <fieldset class="radio-group">
-      <legend>Direction</legend>
-      <label class="radio-option"><input type="radio" name="direction" value="i_delegate" checked> I give them tasks</label>
-      <label class="radio-option"><input type="radio" name="direction" value="i_do"> They give me tasks</label>
+      <legend>How do you work together?</legend>
+      <label class="radio-option"><input type="radio" name="relationship" value="i_delegate" checked> I give them tasks</label>
+      <label class="radio-option"><input type="radio" name="relationship" value="i_do"> They give me tasks</label>
+      <label class="radio-option"><input type="radio" name="relationship" value="shared"> We're equals — we both just get things done</label>
     </fieldset>
     <label for="label">Label <span class="muted small">(optional, e.g. "Marketing")</span></label>
     <input id="label" name="label" type="text" maxlength="60" placeholder="Optional name for this pair">
     <button type="submit" class="btn btn-primary btn-block">Send invite</button>
   </form>
-</section>
-
-${pendingIncoming.length ? `
-<section class="card">
-  <h2>Pending invites for you</h2>
-  <ul class="pair-list">${pendingIncoming.map(incomingRow).join('')}</ul>
-</section>` : ''}
-
-${pendingOutgoing.length ? `
-<section class="card">
-  <h2>Waiting on their confirmation</h2>
-  <ul class="pair-list">${pendingOutgoing.map(outgoingRow).join('')}</ul>
-</section>` : ''}
-
-<section class="card">
-  <h2>Your pairs</h2>
-  ${active.length ? `<ul class="pair-list">${active.map(pairRow).join('')}</ul>` : `<p class="muted">No active pairs yet — invite someone above.</p>`}
-</section>
+</details>
 `,
   };
 }
@@ -600,27 +938,34 @@ function statusHistoryList(events) {
   };
   return `<ul class="history-list">
     ${events.map((e) => `<li>
-      <span class="history-when">${fmtDateTime(e.created_at)}</span>
       <span class="history-what">${escapeHtml(label(e))}</span>
-      <span class="history-who muted small">— ${escapeHtml(e.actor_email)}</span>
+      <span class="history-when">· ${fmtDateTime(e.created_at)} · ${escapeHtml(e.actor_email)}</span>
       ${e.note ? `<div class="history-note">"${escapeHtml(e.note)}"</div>` : ''}
     </li>`).join('')}
   </ul>`;
 }
 
-function taskCard({ task, role, user, pair, events }) {
+function taskCard({ task, role, perms, user, pair, events, notes = [] }) {
   const isCreator = task.created_by_user_id === user.id;
-  const isDoer = role === 'doer';
-  const selfAdded = task.created_by_user_id === pair.doer_user_id;
+  const canChangeStatus = perms.canChangeStatus;
+  const selfAdded = !perms.shared && task.created_by_user_id === pair.doer_user_id;
   const stale = task.status !== 'done' && daysSince(task.status_changed_at) >= pair.stale_days;
   const overdue = isOverdue(task.due_date, task.status);
+  const addedByEmail = task.created_by_user_id === pair.delegator_user_id ? pair.delegator_email : pair.doer_email;
+  const addedByLabel = task.created_by_user_id === user.id ? 'you' : addedByEmail.split('@')[0];
+  const myNote = notes.find((n) => n.user_id === user.id);
+  const theirNotes = notes.filter((n) => n.user_id !== user.id);
 
   const statusButtons = [];
-  if (isDoer) {
+  if (canChangeStatus) {
     if (task.status === 'todo') {
       statusButtons.push(`<form method="post" action="/pairs/${pair.id}/tasks/${task.id}/status" class="inline-form">
         <input type="hidden" name="status" value="in_progress">
         <button class="btn btn-small btn-primary" type="submit">Start</button>
+      </form>`);
+      statusButtons.push(`<form method="post" action="/pairs/${pair.id}/tasks/${task.id}/status" class="inline-form">
+        <input type="hidden" name="status" value="done">
+        <button class="btn btn-small btn-ghost" type="submit">Mark done</button>
       </form>`);
     }
     if (task.status === 'in_progress') {
@@ -633,12 +978,6 @@ function taskCard({ task, role, user, pair, events }) {
         <button class="btn btn-small btn-ghost" type="submit">Back to to-do</button>
       </form>`);
     }
-    if (task.status === 'todo') {
-      statusButtons.push(`<form method="post" action="/pairs/${pair.id}/tasks/${task.id}/status" class="inline-form">
-        <input type="hidden" name="status" value="done">
-        <button class="btn btn-small btn-ghost" type="submit">Mark done</button>
-      </form>`);
-    }
     if (task.status === 'done') {
       statusButtons.push(`<form method="post" action="/pairs/${pair.id}/tasks/${task.id}/status" class="inline-form">
         <input type="hidden" name="status" value="in_progress">
@@ -648,39 +987,58 @@ function taskCard({ task, role, user, pair, events }) {
   }
 
   const urgentToggle = isCreator ? `<form method="post" action="/pairs/${pair.id}/tasks/${task.id}/urgent" class="inline-form">
-      <button class="btn btn-small btn-ghost" type="submit">${task.is_urgent ? 'Unmark urgent' : 'Mark urgent'}</button>
+      <button class="switch" type="submit" aria-pressed="${task.is_urgent ? 'true' : 'false'}">
+        <span class="track"></span>Urgent
+      </button>
     </form>` : '';
 
-  const noteForm = (isDoer && task.status !== 'todo') ? `<details class="note-details">
-      <summary>${task.done_note ? 'Edit note' : 'Add a note'}</summary>
+  // Both people can leave a note; each owns theirs and can't touch the other's.
+  const noteForm = `<details class="note-details">
+      <summary>${myNote ? 'Edit your note' : 'Add your note'}</summary>
       <form method="post" action="/pairs/${pair.id}/tasks/${task.id}/note" class="stacked-form tight">
-        <textarea name="note" maxlength="500" placeholder="e.g. handled this over email, see attached">${escapeHtml(task.done_note || '')}</textarea>
-        <button class="btn btn-small btn-primary" type="submit">Save note</button>
+        <textarea name="note" maxlength="500" placeholder="e.g. handled this over email, see attached">${escapeHtml(myNote ? myNote.note : '')}</textarea>
+        <button class="btn btn-small btn-primary" type="submit" style="align-self:flex-start;margin-top:8px">Save note</button>
       </form>
-    </details>` : '';
+    </details>`;
 
-  const cardClasses = ['task-card', task.is_urgent ? 'urgent' : '', stale ? 'stale' : ''].filter(Boolean).join(' ');
+  const noteBlock = (n, mine) => `<div class="note ${mine ? 'note-mine' : ''}">
+      <div class="note-head">${avatar(n.author_email, true)}<span class="note-who">${mine ? 'You' : escapeHtml(n.author_email.split('@')[0])}</span><span class="note-when muted small">${fmtDate(n.updated_at)}</span></div>
+      <div class="note-body">${escapeHtml(n.note)}</div>
+    </div>`;
+
+  const notesHtml = (myNote || theirNotes.length)
+    ? `<div class="notes">
+        ${theirNotes.map((n) => noteBlock(n, false)).join('')}
+        ${myNote ? noteBlock(myNote, true) : ''}
+      </div>`
+    : '';
+
+  const cardClasses = [
+    'task-card',
+    task.is_urgent ? 'urgent' : '',
+    stale ? 'stale' : '',
+    task.status === 'done' ? 'is-done' : '',
+  ].filter(Boolean).join(' ');
+
   return `<li class="${cardClasses}" data-task-id="${task.id}">
     <div class="task-head">
       <span class="task-title">${escapeHtml(task.title)}</span>
       <span class="task-badges">
-        ${task.is_urgent ? '<span class="badge badge-urgent">Urgent</span>' : ''}
-        ${stale ? `<span class="badge badge-stale">Stale ${Math.floor(daysSince(task.status_changed_at))}d</span>` : ''}
-        ${overdue ? '<span class="badge badge-overdue">Overdue</span>' : ''}
+        ${task.is_urgent ? '<span class="badge badge-urgent"><span class="dot"></span>Urgent</span>' : ''}
+        ${stale ? `<span class="badge badge-stale"><span class="dot"></span>Quiet ${Math.floor(daysSince(task.status_changed_at))}d</span>` : ''}
+        ${overdue ? '<span class="badge badge-overdue"><span class="dot"></span>Overdue</span>' : ''}
         ${selfAdded ? '<span class="badge badge-self">Self-added</span>' : ''}
       </span>
     </div>
     ${task.description ? `<p class="task-desc">${escapeHtml(task.description)}</p>` : ''}
-    <div class="task-meta muted small">
-      Created ${fmtDate(task.created_at)} by ${task.created_by_user_id === pair.delegator_user_id ? 'delegator' : 'doer'}
-      ${task.due_date ? ` · Due ${fmtDate(task.due_date)}` : ''}
-      ${task.status === 'done' && task.done_at ? ` · Done ${fmtDate(task.done_at)}` : ''}
+    <div class="task-meta">
+      Added ${fmtDate(task.created_at)} by ${escapeHtml(addedByLabel)}${task.due_date ? ` · Due ${fmtDate(task.due_date)}` : ''}${task.status === 'done' && task.done_at ? ` · Done ${fmtDate(task.done_at)}` : ''}
     </div>
-    ${task.done_note ? `<div class="done-note">"${escapeHtml(task.done_note)}"</div>` : ''}
-    <div class="task-actions">
+    ${notesHtml}
+    ${(statusButtons.length || urgentToggle) ? `<div class="task-actions">
       ${statusButtons.join('')}
       ${urgentToggle}
-    </div>
+    </div>` : ''}
     ${noteForm}
     <details class="history-details">
       <summary>History (${events.length})</summary>
@@ -689,27 +1047,76 @@ function taskCard({ task, role, user, pair, events }) {
   </li>`;
 }
 
-function pairPage({ user, pair, role, columns, query }) {
+/**
+ * A plain-English statement of who you are here and what that lets you do.
+ * The whole point is that nobody should have to work it out.
+ */
+function roleBanner(pair, role, perms) {
+  const otherName = (role === 'delegator' ? pair.doer_email : pair.delegator_email).split('@')[0];
+  if (perms.shared) {
+    return `<div class="role-banner role-shared">
+      <span class="role-title">Equal partners</span>
+      <span class="role-detail">You and ${escapeHtml(otherName)} share this list — you can both add tasks, move them along, and leave notes.</span>
+    </div>`;
+  }
+  if (role === 'delegator') {
+    return `<div class="role-banner role-delegating">
+      <span class="role-title">You give the tasks here</span>
+      <span class="role-detail">${escapeHtml(otherName)} marks them done — you can add tasks and notes, and see everything they record.</span>
+    </div>`;
+  }
+  return `<div class="role-banner role-doing">
+      <span class="role-title">You do the tasks here</span>
+      <span class="role-detail">${escapeHtml(otherName)} gives you tasks — you control the status and can add your own tasks and notes.</span>
+    </div>`;
+}
+
+function pairPage({ user, pair, role, perms, columns, stats, query }) {
   const otherEmail = role === 'delegator' ? pair.doer_email : pair.delegator_email;
   const colOrder = ['todo', 'in_progress', 'done'];
+  const emptyCopy = {
+    todo: 'Nothing waiting.',
+    in_progress: 'Nothing in flight.',
+    done: 'Nothing finished yet.',
+  };
 
   return {
     title: pair.label || otherEmail,
     wide: true,
     body: `
-<a class="back-link" href="/dashboard">&larr; Dashboard</a>
+<a class="back-link" href="/dashboard">← Dashboard</a>
 ${alertBox(query)}
 <div class="pair-header">
-  <h1>${escapeHtml(pair.label || otherEmail)}</h1>
-  <p class="muted">${role === 'delegator' ? `You → ${escapeHtml(pair.doer_email)}` : `${escapeHtml(pair.delegator_email)} → You`} · stale after ${pair.stale_days}d</p>
+  <div class="pair-header-top">
+    ${avatar(otherEmail)}
+    <div class="pair-who">
+      <h1>${escapeHtml(pair.label || otherEmail)}</h1>
+      <div class="pair-sub">${perms.shared
+        ? `You ↔ ${escapeHtml(pair.delegator_user_id === user.id ? pair.doer_email : pair.delegator_email)}`
+        : role === 'delegator' ? `You → ${escapeHtml(pair.doer_email)}` : `${escapeHtml(pair.delegator_email)} → You`} · flags quiet tasks after ${pair.stale_days}d</div>
+    </div>
+  </div>
+  ${roleBanner(pair, role, perms)}
+  <div class="pair-progress">
+    ${meter(stats.done, stats.total)}
+    <div class="meter-row">
+      ${countChips(stats)}
+      <span class="muted small">${stats.done}/${stats.total} done</span>
+    </div>
+  </div>
   <details class="settings-details">
     <summary>Pair settings</summary>
     <form method="post" action="/pairs/${pair.id}/settings" class="stacked-form tight">
       <label for="label">Label</label>
       <input id="label" name="label" type="text" maxlength="60" value="${escapeHtml(pair.label || '')}">
-      <label for="stale_days">Flag as stale after (days)</label>
+      <label for="stale_days">Flag as quiet after (days)</label>
       <input id="stale_days" name="stale_days" type="number" min="1" max="60" value="${pair.stale_days}">
-      <button type="submit" class="btn btn-small btn-primary">Save settings</button>
+      <fieldset class="radio-group">
+        <legend>Relationship</legend>
+        <label class="radio-option"><input type="radio" name="mode" value="delegated" ${perms.shared ? '' : 'checked'}> One gives tasks, the other does them</label>
+        <label class="radio-option"><input type="radio" name="mode" value="shared" ${perms.shared ? 'checked' : ''}> Equal partners — both do everything</label>
+      </fieldset>
+      <button type="submit" class="btn btn-small btn-primary" style="align-self:flex-start;margin-top:12px">Save settings</button>
     </form>
   </details>
 </div>
@@ -723,16 +1130,22 @@ ${alertBox(query)}
     <textarea id="description" name="description" maxlength="1000" placeholder="Any extra detail"></textarea>
     <label for="due_date">Due date <span class="muted small">(optional)</span></label>
     <input id="due_date" name="due_date" type="date">
-    <label class="checkbox-option"><input type="checkbox" name="is_urgent" value="1"> Mark urgent</label>
+    <label class="switch-row">
+      <span>Mark urgent</span>
+      <input type="checkbox" name="is_urgent" value="1">
+      <span class="switch-track"></span>
+    </label>
     <button type="submit" class="btn btn-primary btn-block">Save task</button>
   </form>
 </details>
 
 <div class="board">
   ${colOrder.map((status) => `
-    <section class="board-col">
-      <h2>${STATUS_LABELS[status]} <span class="count">${columns[status].length}</span></h2>
-      ${columns[status].length ? `<ul class="task-list">${columns[status].map((t) => taskCard(t)).join('')}</ul>` : `<p class="muted small empty-col">Nothing here.</p>`}
+    <section class="board-col col-${status}">
+      <h2><span class="col-mark"></span>${STATUS_LABELS[status]} <span class="count">${columns[status].length}</span></h2>
+      ${columns[status].length
+        ? `<ul class="task-list">${columns[status].map((t) => taskCard(t)).join('')}</ul>`
+        : `<p class="empty-col">${emptyCopy[status]}</p>`}
     </section>
   `).join('')}
 </div>
@@ -906,51 +1319,158 @@ function baseUrl(ctx) {
   return process.env.BASE_URL || `http://${ctx.req.headers.host}`;
 }
 
+function startSession(ctx, user) {
+  const session = sign({ uid: user.id, exp: Date.now() + SESSION_TTL_MS });
+  ctx.setCookie(SESSION_COOKIE, session, { maxAge: Math.floor(SESSION_TTL_MS / 1000) });
+}
+
+function redirectWithError(ctx, path, message) {
+  return ctx.redirect(`${path}?error=${encodeURIComponent(message)}`);
+}
+
 function registerAuthRoutes(router) {
   router.get('/login', (ctx) => {
     if (ctx.user) return ctx.redirect('/dashboard');
-    const { title, body } = loginPage({ query: ctx.query });
+    const { title, body } = loginPage({ query: ctx.query, emailLinks: emailDeliveryConfigured() });
     ctx.html(layout({ title, user: null, body }));
   });
 
-  router.post('/auth/request', async (ctx) => {
+  // ---- password sign-in ------------------------------------------------
+
+  router.post('/auth/password', async (ctx) => {
     const emailRaw = ctx.body.email || '';
+    const password = ctx.body.password || '';
     if (!isValidEmail(emailRaw)) {
-      return ctx.redirect(`/login?error=${encodeURIComponent('Please enter a valid email address.')}`);
+      return redirectWithError(ctx, '/login', 'Please enter a valid email address.');
     }
     const email = normalizeEmail(emailRaw);
-    const user = findOrCreateUser(email);
-    const token = randomToken();
-    createLoginToken(user.id, token, LOGIN_TOKEN_TTL_MS);
-    const link = `${baseUrl(ctx)}/auth/verify?token=${token}`;
+    const user = findUserByEmail(email);
 
-    const result = await sendEmail({
-      to: email,
-      subject: 'Your Taskwick sign-in link',
-      text: `Click this link to sign in (expires in 15 minutes):\n\n${link}\n\nIf you didn't request this, you can ignore this email.`,
-    });
-
-    const params = new URLSearchParams({ sent: '1', email });
-    if (result.dev && process.env.NODE_ENV !== 'production') {
-      params.set('devlink', link);
+    // A person whose account predates passwords (or who was just invited)
+    // has no hash yet — send them to set one rather than failing silently.
+    if (user && !user.password_hash) {
+      return ctx.redirect(`/set-password?email=${encodeURIComponent(email)}`);
     }
-    ctx.redirect(`/login?${params.toString()}`);
+
+    const ok = user && await verifyPassword(password, user.password_hash);
+    if (!ok) {
+      // Same message either way, so this can't be used to discover which
+      // email addresses have accounts.
+      return redirectWithError(ctx, '/login', 'That email and password combination is not recognised.');
+    }
+    startSession(ctx, user);
+    ctx.redirect('/dashboard');
+  });
+
+  // ---- first-time password setup --------------------------------------
+
+  router.get('/set-password', (ctx) => {
+    const { title, body } = setPasswordPage({ query: ctx.query });
+    ctx.html(layout({ title, user: null, body }));
+  });
+
+  router.post('/set-password', async (ctx) => {
+    const emailRaw = ctx.body.email || '';
+    const password = ctx.body.password || '';
+    const confirm = ctx.body.confirm || '';
+    const back = `/set-password?email=${encodeURIComponent(emailRaw)}`;
+
+    if (!isValidEmail(emailRaw)) return redirectWithError(ctx, '/set-password', 'Please enter a valid email address.');
+    const email = normalizeEmail(emailRaw);
+    const user = findUserByEmail(email);
+
+    if (!user) return redirectWithError(ctx, '/join', 'No account for that email yet — use your invite code to join.');
+    if (user.password_hash) {
+      return redirectWithError(ctx, '/login', 'That account already has a password. Sign in with it.');
+    }
+    const problem = passwordProblem(password);
+    if (problem) return redirectWithError(ctx, back, problem);
+    if (password !== confirm) return redirectWithError(ctx, back, 'Those two passwords do not match.');
+
+    setUserPassword(user.id, await hashPassword(password));
+    startSession(ctx, user);
+    ctx.redirect('/dashboard?notice=' + encodeURIComponent('Password set. You can sign in with it from now on.'));
+  });
+
+  // ---- joining with an invite code -------------------------------------
+
+  router.get('/join', (ctx) => {
+    const { title, body } = joinPage({ query: ctx.query, firstEver: countUsers() === 0 });
+    ctx.html(layout({ title, user: null, body }));
+  });
+
+  router.post('/join', async (ctx) => {
+    const emailRaw = ctx.body.email || '';
+    const code = (ctx.body.code || '').trim();
+    const password = ctx.body.password || '';
+    const confirm = ctx.body.confirm || '';
+
+    if (!isValidEmail(emailRaw)) return redirectWithError(ctx, '/join', 'Please enter a valid email address.');
+    const email = normalizeEmail(emailRaw);
+
+    const existing = findUserByEmail(email);
+    if (existing && existing.password_hash) {
+      return redirectWithError(ctx, '/login', 'You already have an account — sign in instead.');
+    }
+
+    // The very first account on a fresh install needs no code; everyone
+    // after that must present an invite code addressed to their email.
+    const isFirstEver = countUsers() === 0;
+    if (!isFirstEver) {
+      if (!code) return redirectWithError(ctx, '/join', 'Please enter the invite code you were given.');
+      if (!findPendingInviteByCode(email, code)) {
+        return redirectWithError(ctx, '/join', 'That invite code does not match that email address.');
+      }
+    }
+
+    const problem = passwordProblem(password);
+    if (problem) return redirectWithError(ctx, '/join', problem);
+    if (password !== confirm) return redirectWithError(ctx, '/join', 'Those two passwords do not match.');
+
+    const user = findOrCreateUser(email);
+    setUserPassword(user.id, await hashPassword(password));
+    startSession(ctx, user);
+    ctx.redirect('/dashboard?notice=' + encodeURIComponent('Welcome to Taskwick.'));
+  });
+
+  // ---- email sign-in links (only when a provider is configured) --------
+
+  router.post('/auth/request', async (ctx) => {
+    if (!emailDeliveryConfigured()) {
+      return redirectWithError(ctx, '/login',
+        'Email sign-in links are not switched on. Use your password instead.');
+    }
+    const emailRaw = ctx.body.email || '';
+    if (!isValidEmail(emailRaw)) {
+      return redirectWithError(ctx, '/login', 'Please enter a valid email address.');
+    }
+    const email = normalizeEmail(emailRaw);
+    const user = findUserByEmail(email);
+
+    // Always report success so this can't be used to enumerate accounts.
+    if (user) {
+      const token = randomToken();
+      createLoginToken(user.id, token, LOGIN_TOKEN_TTL_MS);
+      await sendEmail({
+        to: email,
+        subject: 'Your Taskwick sign-in link',
+        text: `Click this link to sign in (expires in 15 minutes):\n\n${baseUrl(ctx)}/auth/verify?token=${token}\n\nIf you didn't request this, you can ignore this email.`,
+      });
+    }
+    ctx.redirect(`/login?${new URLSearchParams({ sent: '1', email }).toString()}`);
   });
 
   router.get('/auth/verify', (ctx) => {
-    const token = ctx.query.token;
-    const result = consumeLoginToken(token);
+    const result = consumeLoginToken(ctx.query.token);
     if (!result.ok) {
       const messages = {
         not_found: 'That sign-in link is invalid.',
         used: 'That sign-in link has already been used. Request a new one.',
         expired: 'That sign-in link has expired. Request a new one.',
       };
-      return ctx.redirect(`/login?error=${encodeURIComponent(messages[result.reason] || 'Sign-in failed.')}`);
+      return redirectWithError(ctx, '/login', messages[result.reason] || 'Sign-in failed.');
     }
-    const user = findUserById(result.userId);
-    const session = sign({ uid: user.id, exp: Date.now() + SESSION_TTL_MS });
-    ctx.setCookie(SESSION_COOKIE, session, { maxAge: Math.floor(SESSION_TTL_MS / 1000) });
+    startSession(ctx, findUserById(result.userId));
     ctx.redirect('/dashboard');
   });
 
@@ -961,8 +1481,7 @@ function registerAuthRoutes(router) {
 }
 
 function sessionMiddleware(ctx) {
-  const token = ctx.cookies[SESSION_COOKIE];
-  const payload = verify(token);
+  const payload = verify(ctx.cookies[SESSION_COOKIE]);
   if (payload && payload.uid) {
     const user = findUserById(payload.uid);
     if (user) ctx.user = user;
@@ -991,7 +1510,9 @@ function loadPairForMember(ctx) {
 function registerPairRoutes(router) {
   router.get('/dashboard', requireAuth((ctx) => {
     const all = listPairsForUser(ctx.user.id);
-    const active = all.filter((p) => p.status === 'active');
+    const active = all
+      .filter((p) => p.status === 'active')
+      .map((p) => ({ ...p, stats: getPairStats(p.id, p.stale_days) }));
     const pendingIncoming = all.filter((p) => p.status === 'pending' && p.invited_by_user_id !== ctx.user.id);
     const pendingOutgoing = all.filter((p) => p.status === 'pending' && p.invited_by_user_id === ctx.user.id);
     const { title, body } = dashboardPage({ user: ctx.user, active, pendingIncoming, pendingOutgoing, query: ctx.query });
@@ -1000,7 +1521,7 @@ function registerPairRoutes(router) {
 
   router.post('/pairs', requireAuth(async (ctx) => {
     const emailRaw = ctx.body.email || '';
-    const direction = ctx.body.direction === 'i_do' ? 'i_do' : 'i_delegate';
+    const relationship = ctx.body.relationship; // i_delegate | i_do | shared
     const label = (ctx.body.label || '').trim().slice(0, 60);
 
     if (!isValidEmail(emailRaw)) {
@@ -1008,27 +1529,44 @@ function registerPairRoutes(router) {
     }
     const otherEmail = normalizeEmail(emailRaw);
     if (otherEmail === ctx.user.email) {
-      return ctx.redirect(`/dashboard?error=${encodeURIComponent("You can't form a pair with yourself.")}`);
+      return ctx.redirect(`/dashboard?error=${encodeURIComponent("You can't connect with yourself.")}`);
     }
     const other = findOrCreateUser(otherEmail);
-    const delegatorId = direction === 'i_delegate' ? ctx.user.id : other.id;
-    const doerId = direction === 'i_delegate' ? other.id : ctx.user.id;
 
-    if (findPairBetween(delegatorId, doerId)) {
-      return ctx.redirect(`/dashboard?error=${encodeURIComponent('That pair already exists.')}`);
+    // In 'shared' mode nobody is the boss, but the table still stores two
+    // sides; the inviter takes the first slot and mode drives permissions.
+    const mode = relationship === 'shared' ? 'shared' : 'delegated';
+    const iDelegate = relationship !== 'i_do';
+    const delegatorId = iDelegate ? ctx.user.id : other.id;
+    const doerId = iDelegate ? other.id : ctx.user.id;
+
+    if (findPairBetween(delegatorId, doerId) || findPairBetween(doerId, delegatorId)) {
+      return ctx.redirect(`/dashboard?error=${encodeURIComponent('You are already connected with that person.')}`);
     }
 
-    createPair({ delegatorUserId: delegatorId, doerUserId: doerId, invitedByUserId: ctx.user.id, label });
+    // A new person needs a code to claim their account, since email
+    // delivery may not be switched on. Existing people just sign in.
+    const needsCode = !other.password_hash;
+    const inviteCode = needsCode ? generateInviteCode() : null;
+    createPair({
+      delegatorUserId: delegatorId, doerUserId: doerId,
+      invitedByUserId: ctx.user.id, label, mode, inviteCode,
+    });
 
-    // Best-effort notification; the invitee still needs to sign in with
-    // their own email to see and confirm the invite (passwordless auth).
     sendEmail({
       to: otherEmail,
       subject: `${ctx.user.email} invited you on Taskwick`,
-      text: `${ctx.user.email} wants to connect with you on Taskwick (${direction === 'i_delegate' ? 'they will give you tasks' : 'you will give them tasks'}).\n\nSign in at ${process.env.BASE_URL || `http://${ctx.req.headers.host}`}/login with this email address to accept.`,
+      text: `${ctx.user.email} invited you to Taskwick.\n\n${mode === 'shared'
+        ? 'You will work together as equals on a shared task list.'
+        : iDelegate ? 'They will give you tasks.' : 'You will give them tasks.'}\n\n${inviteCode
+        ? `Go to ${process.env.BASE_URL || `http://${ctx.req.headers.host}`}/join and use invite code: ${inviteCode}`
+        : `Sign in at ${process.env.BASE_URL || `http://${ctx.req.headers.host}`}/login to accept.`}`,
     }).catch(() => {});
 
-    ctx.redirect(`/dashboard?notice=${encodeURIComponent(`Invite sent to ${otherEmail}.`)}`);
+    const notice = inviteCode
+      ? `Invite created for ${otherEmail}. Send them this code to join: ${inviteCode}`
+      : `Invite sent to ${otherEmail}. They'll see it when they next sign in.`;
+    ctx.redirect(`/dashboard?notice=${encodeURIComponent(notice)}`);
   }));
 
   router.post('/pairs/:id/accept', requireAuth((ctx) => {
@@ -1036,7 +1574,8 @@ function registerPairRoutes(router) {
     if (error) return ctx.redirect('/dashboard');
     if (pair.status !== 'pending' || pair.invited_by_user_id === ctx.user.id) return ctx.redirect('/dashboard');
     setPairStatus(pair.id, 'active');
-    ctx.redirect('/dashboard?notice=' + encodeURIComponent('Pair confirmed.'));
+    clearInviteCode(pair.id); // single-use: the code has done its job
+    ctx.redirect('/dashboard?notice=' + encodeURIComponent('Connected.'));
   }));
 
   router.post('/pairs/:id/decline', requireAuth((ctx) => {
@@ -1052,7 +1591,8 @@ function registerPairRoutes(router) {
     if (error) return ctx.redirect('/dashboard');
     const staleDays = Math.min(60, Math.max(1, parseInt(ctx.body.stale_days, 10) || 3));
     const label = (ctx.body.label || '').trim().slice(0, 60);
-    updatePairSettings(pair.id, { staleDays, label });
+    const mode = ctx.body.mode === 'shared' ? 'shared' : 'delegated';
+    updatePairSettings(pair.id, { staleDays, label, mode });
     ctx.redirect(`/pairs/${pair.id}?notice=${encodeURIComponent('Settings saved.')}`);
   }));
 
@@ -1061,11 +1601,13 @@ function registerPairRoutes(router) {
     if (error === 'not_found') return ctx.notFound();
     if (error === 'forbidden') return ctx.html(layout({ title: 'Forbidden', user: ctx.user, body: '<div class="alert alert-error">You are not part of this pair.</div>' }), 403);
 
+    const perms = permissionsFor(pair, role);
     const tasks = listTasksForPair(pair.id);
     const columns = { todo: [], in_progress: [], done: [] };
     for (const task of tasks) {
       const events = listTaskEvents(task.id);
-      columns[task.status].push({ task, role, user: ctx.user, pair, events });
+      const notes = listTaskNotes(task.id);
+      columns[task.status].push({ task, role, perms, user: ctx.user, pair, events, notes });
     }
     // Urgent-first, then (for open tasks) oldest status-change first so the
     // most-gone-quiet items surface near the top; done tasks newest first.
@@ -1077,7 +1619,8 @@ function registerPairRoutes(router) {
       });
     }
 
-    const { title, body, wide } = pairPage({ user: ctx.user, pair, role, columns, query: ctx.query });
+    const stats = getPairStats(pair.id, pair.stale_days);
+    const { title, body, wide } = pairPage({ user: ctx.user, pair, role, perms, columns, stats, query: ctx.query });
     ctx.html(layout({ title, user: ctx.user, body, wide }));
   }));
 
@@ -1104,14 +1647,14 @@ function registerPairRoutes(router) {
     if (error) return ctx.redirect('/dashboard');
     const task = loadTaskInPair(ctx, pair);
     if (!task) return ctx.notFound();
-    if (role !== 'doer') {
-      return ctx.redirect(`/pairs/${pair.id}?error=${encodeURIComponent('Only the doer can change task status.')}`);
+    if (!permissionsFor(pair, role).canChangeStatus) {
+      return ctx.redirect(`/pairs/${pair.id}?error=${encodeURIComponent('Only the doer can change task status in this relationship.')}`);
     }
     const toStatus = ctx.body.status;
     if (!['todo', 'in_progress', 'done'].includes(toStatus)) {
       return ctx.redirect(`/pairs/${pair.id}?error=${encodeURIComponent('Invalid status.')}`);
     }
-    updateTaskStatus(task.id, { toStatus, actorUserId: ctx.user.id, note: null });
+    updateTaskStatus(task.id, { toStatus, actorUserId: ctx.user.id });
     ctx.redirect(`/pairs/${pair.id}`);
   }));
 
@@ -1120,12 +1663,11 @@ function registerPairRoutes(router) {
     if (error) return ctx.redirect('/dashboard');
     const task = loadTaskInPair(ctx, pair);
     if (!task) return ctx.notFound();
-    if (role !== 'doer') {
-      return ctx.redirect(`/pairs/${pair.id}?error=${encodeURIComponent('Only the doer can add completion notes.')}`);
-    }
+    // Both people can leave a note — but only ever their own. saveMyNote is
+    // keyed on the acting user, so neither side can touch the other's.
     const note = (ctx.body.note || '').trim().slice(0, 500);
-    updateTaskNote(task.id, { note, actorUserId: ctx.user.id });
-    ctx.redirect(`/pairs/${pair.id}?notice=${encodeURIComponent('Note saved.')}`);
+    saveMyNote(task.id, { note, actorUserId: ctx.user.id });
+    ctx.redirect(`/pairs/${pair.id}?notice=${encodeURIComponent(note ? 'Note saved.' : 'Note removed.')}`);
   }));
 
   router.post('/pairs/:id/tasks/:taskId/urgent', requireAuth((ctx) => {
